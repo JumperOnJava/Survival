@@ -29,15 +29,20 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.timerMovement = new System.Windows.Forms.Timer(this.components);
+            this.timerDeleteMonster = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 497);
+            this.ClientSize = new System.Drawing.Size(852, 778);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(870, 825);
+            this.MinimumSize = new System.Drawing.Size(870, 825);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
@@ -49,6 +54,7 @@
         #endregion
 
         private System.Windows.Forms.Timer timerMovement;
+        private System.Windows.Forms.Timer timerDeleteMonster;
     }
 }
 

@@ -7,14 +7,16 @@ using System.Threading.Tasks;
 
 namespace Survival.Entites
 {
-    public class Entity
+    public abstract class Entity
     {
-        public int posX;
-        public int posY;
+        public int posX { get; set; }
+        public int posY { get; set; }
 
-        public int dirX;
-        public int dirY;
-        public bool isMoving;
+        public int dirX { get; set; }
+        public int dirY { get; set; }
+        public bool isMoving { get; set; }
+        public int direction;
+        public int health;
 
         public int currentAnimation;
         public int currentFrame;
@@ -30,7 +32,7 @@ namespace Survival.Entites
 
         public Image spriteSheet;
 
-        public Entity(int posX, int posY, int runFrames, int idleFrames, int attackFrames, int hitFrames, int deathFrames, Image spriteSheet)
+        public Entity(int posX, int posY, int runFrames, int idleFrames, int attackFrames, int hitFrames, int deathFrames, int size, int health, Image spriteSheet)
         {
             this.posX = posX;
             this.posY = posY;
@@ -40,61 +42,25 @@ namespace Survival.Entites
             this.hitFrames = hitFrames;
             this.deathFrames = deathFrames;
             this.spriteSheet = spriteSheet;
-            size = 128;
-            currentAnimation = 4;
-            currentFrame = 0;
+            this.size = size;
             currentLimit = idleFrames;
+            this.health = health;
         }
 
-        public void Move()
+        public virtual void Move()
         {
             posX += dirX;
             posY += dirY;
         }
 
-        public void PlayAnimation(Graphics g)
+        public virtual void PlayAnimation(Graphics g)
         {
             if (currentFrame < currentLimit - 1)
                 currentFrame++;
             else currentFrame = 0;
-            g.DrawImage(spriteSheet, new Rectangle(new Point(posX, posY), new Size(size, size)), 128 * currentFrame, 128 * currentAnimation, size, size, GraphicsUnit.Pixel);
+            g.DrawImage(spriteSheet, new Rectangle(new Point(posX, posY), new Size(size, size)), size * currentFrame, size * currentAnimation, size, size, GraphicsUnit.Pixel);
         }
 
-        public void SetAnimationConfiguration(int currentAnimation)
-        {
-            this.currentAnimation = currentAnimation;
-
-            switch(currentAnimation)
-            {
-                case 4:
-                case 5:
-                case 6:
-                case 7:
-                    currentLimit = idleFrames;
-                    break;
-                case 0:
-                case 1:
-                case 2:
-                case 3:
-                    currentLimit = runFrames;
-                    break;
-                case 8:
-                case 9:
-                case 10:
-                case 11:
-                    currentLimit = attackFrames;
-                    break;
-                case 12:
-                case 13:
-                case 14:
-                case 15:
-                    currentLimit = hitFrames;
-                    break;
-                case 16:
-                    currentLimit = deathFrames;
-                    break;
-            }
-        }
-
+        public abstract void SetAnimationConfiguration(int currentAnimation);
     }
 }
