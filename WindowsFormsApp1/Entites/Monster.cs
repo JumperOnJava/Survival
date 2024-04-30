@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,6 +13,8 @@ namespace Survival.Entites
     {
         public bool isDead;
         public int speed;
+        
+
         public Monster(int posX, int posY, int runFrames, int idleFrames, int attackFrames, int hitFrames, int deathFrames, int size, int health, Image spriteSheet) : base(posX, posY, runFrames, idleFrames, attackFrames, hitFrames, deathFrames, size, health, spriteSheet)
         {
             this.isDead = false;
@@ -20,7 +23,7 @@ namespace Survival.Entites
 
         public virtual bool IntersectsWith(Player player)
         {
-            if (player.posX < this.posX + this.size / 4 && this.posX < player.posX + player.size / 4 && player.posY < this.posY + this.size / 4)
+            if (this != null && player.posX < this.posX + this.size / 4 && this.posX < player.posX + player.size / 4 && player.posY < this.posY + this.size / 4)
             {
                 return this.posY < player.posY + player.size / 4;
             }

@@ -101,6 +101,15 @@
   <ItemGroup>
     <None Include="Resources\Home.png" />
     <None Include="Resources\board.png" />
+    <None Include="Resources\Без названия%282%29.png" />
+    <None Include="Resources\360_F_442914914_hhGKxrhuyMm6ZeMZvO5M0FRpz7AlyG4l-removebg-preview.png" />
+    <None Include="Resources\border1.png" />
+    <None Include="Resources\ggg.png" />
+    <None Include="Resources\border2.png" />
+    <None Include="Resources\PauseBoard.png" />
+    <None Include="Resources\PauseBoard1.png" />
+    <None Include="Resources\longBoard.png" />
+    <Content Include="Sprites\clouds.png" />
     <Content Include="Sprites\dwarf.png" />
     <Content Include="Sprites\Forest.png" />
     <Content Include="Sprites\player.png" />

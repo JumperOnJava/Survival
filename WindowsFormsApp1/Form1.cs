@@ -4,10 +4,6 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Survival.Entites;
 using Survival.Models;
@@ -18,45 +14,83 @@ namespace Survival
 {
     public partial class Form1 : Form
     {
+        Random rnd = new Random();
+        public bool gameOver = false;
         public Image playerSheet;
         public Image slimeSheet;
         public Image dwarfSheet;
         public Player player;
-        public Monster monster;
+        //public Monster monster;
         public Slime slime;
         public Dwarf dwarf;
-        Random rnd = new Random();
-        public bool gameOver = false;
-        //public bool gameIsStart = false;
+        public List<Monster> monsters = new List<Monster>();
 
-  
+        public int spawnTimer = 0;
+        public int spawnTimerDead = 0;
+        public int spawnInterval = 5000;
+        public int deadInterval = 10000;
+        // public int interval = 5000;
+
 
         public Form1(Form2 f)
         {
             InitializeComponent();
 
-            timerMovement.Interval = 50;
+            timerMovement.Interval = 70;
             timerMovement.Tick += new EventHandler(Update);
             KeyDown += new KeyEventHandler(Keyboard);
             KeyUp += new KeyEventHandler(FreeKeyboard);
 
-            timerDeleteMonster.Interval = 30000;
-            timerDeleteMonster.Tick += new EventHandler(DeleteMonster);
+            timerSpawnMonster.Interval = 1000;
+            timerSpawnMonster.Tick += new EventHandler(SpawnMonsterTick);
+            timerSpawnMonster.Start();
 
-            
+            timerDeadMonster.Interval = 1000;
+            timerDeadMonster.Tick += new EventHandler(DeadMonsterTick);
+            timerDeadMonster.Start();
 
             Init();
-            //timerMovement.Start();
 
         }
 
-        private void DeleteMonster(object sender, EventArgs e)
+        private void DeadMonsterTick(object sender, EventArgs e)
         {
-            // Видаліть монстра з форми
-            monster = null; // або інша логіка для видалення монстра
-            Invalidate(); // Перемалюйте форму, щоб оновити відображення
-            timerDeleteMonster.Stop(); // Зупиніть таймер
+            spawnTimerDead += 1000; // Додаємо 1 секунду до таймера монстрів
+            if (spawnTimerDead >= deadInterval)
+            {
+                for (int i = 0; i < monsters.Count; i++)
+                {
+                    Monster monster = monsters[i];
+                    if (monster != null && monster.isDead)
+                    {
+                        monsters[i] = null;
+
+                    }
+                }
+
+                spawnTimerDead = 0; // Скидаємо таймер, оскільки монстр з'явився
+            }
         }
+
+        private void SpawnMonsterTick(object sender, EventArgs e)
+        {
+            spawnTimer += 1000; // Додаємо 1 секунду до таймера монстрів
+            if (spawnTimer >= spawnInterval)
+            {
+                SpawnMonster();
+                spawnTimer = 0; // Скидаємо таймер, оскільки монстр з'явився
+            }
+        }
+
+        private void SpawnMonster()
+        {
+            int x = rnd.Next(0, this.Width); // Випадкова координата X в межах ширини форми
+            int y = rnd.Next(0, this.Height); // Випадкова координата Y в межах висоти форми
+
+            Monster monster = new Monster(x, y, Hero.runFrames, Hero.idleFrames, Hero.attackFrames, Hero.hitFrames, Hero.deathFrames, 128, 200, playerSheet);
+            monsters.Add(monster);
+        }
+
         private void LeftMouseButton(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
@@ -167,40 +201,19 @@ namespace Survival
                             break;
                     }
 
-                    if (monster != null)
+                    foreach (Monster monster in monsters)
                     {
-                        PlayerAttack(player, monster);
+                        if (player.IntersectsWith(monster))
+                        {
+                            player.PlayerAttack(monster);
+                        }
                     }
 
                     break;
             }
 
         }
-        private void PlayerAttack(Player player, Monster monster)
-        {
-            // Логіка атаки гравця
-            if (player.IntersectsWith(monster) && monster.health > 0)
-            {
-                monster.isMoving = false;
-                monster.dirX = 0;
-                monster.dirY = 0;
-                monster.health -= 20; // Наприклад, зменшення здоров'я монстра
-                monster.SetAnimationConfiguration(12);
 
-            }
-
-            if (monster.health == 0)
-            {
-                monster.isMoving = false;
-                monster.dirX = 0;
-                monster.dirY = 0;
-                monster.SetAnimationConfiguration(16);
-                //timerMovement.Stop();
-                timerDeleteMonster.Start(); // Запустіть таймер для видалення монстра
-
-            }
-
-        }
 
         private void Update(object sender, EventArgs e)
         {
@@ -209,33 +222,55 @@ namespace Survival
                 player.Move();
             }
 
-            if (monster != null)
-            {
-                if (monster.isMoving)
+            /*
+            if (monsters.Count > 1) {
+                foreach (Monster monster in monsters) // Перебираємо копію списку монстрів
                 {
-                    monster.UpdateMonsterMovement(player);
-                    monster.DetermineMonsterAnimation(player);
-                }
+                    if (monster != null)
+                    {
+                        if (monster.isMoving)
+                        {
+                            monster.UpdateMonsterMovement(player);
+                            monster.DetermineMonsterAnimation(player);
+                        }
 
-                monster.MonsterAttack(player);
-                Control(monster, player);
+                        monster.MonsterAttack(player);
+                        Control(monster, player);
 
-                if (monster.health > 0)
-                {
-                    monster.isMoving = true;
+
+                    }
                 }
             }
+        */
+
+            for (int i = 0; i < monsters.Count; i++)
+            {
+                Monster monster = monsters[i];
+                if (monster != null)
+                {
+                    if (monster.isMoving)
+                    {
+                        monster.UpdateMonsterMovement(player);
+                        monster.DetermineMonsterAnimation(player);
+                    }
+
+                    monster.MonsterAttack(player);
+
+
+                }
+                Control(monster, player);
+            }
+
+
+
 
             slime.UpdateMonsterMovement(player);
             slime.DetermineMonsterAnimation(player);
-            //AutoMovingAnim(monster);
-            //AutoMoving(monster);
 
             Invalidate();
-
         }
 
-        private void Control(Monster monster, Entity player)
+        private void Control(Monster monster, Player player)
         {
             if (player.health == 0)
             {
@@ -244,7 +279,37 @@ namespace Survival
                 player.SetAnimationConfiguration(16);
                 timerMovement.Stop();
             }
+
+            if (monster != null)
+            {
+                if (monster.health <= 0)
+                {
+
+                    monster.isMoving = false;
+                    monster.dirX = 0;
+                    monster.dirY = 0;
+                    monster.SetAnimationConfiguration(16);
+
+                    monster.isDead = true;
+                    //timerDeadMonster.Start();
+                    //monsters.Remove(monster);
+                    //MonsterDies();
+                    //corpses.Add((monster, DateTime.Now));
+                    //monsters.Remove(monster); // Видалити монстра зі списку
+                    //timerDeleteMonster.Start(); // Запустіть таймер для видалення монстра
+                    //corpses.Add((monster, DateTime.Now));
+                    //timerDeleteMonster.Start(); // Запустіть таймер для видалення монстра
+                }
+                else
+                {
+                    monster.isMoving = true;
+                }
+            }
+
+
+
         }
+
 
         public void Init()
         {
@@ -261,7 +326,7 @@ namespace Survival
             player = new Player(0, 0, Hero.runFrames, Hero.idleFrames, Hero.attackFrames, Hero.hitFrames, Hero.deathFrames, 128, 100, playerSheet);
 
 
-            monster = new Monster(150, 150, Hero.runFrames, Hero.idleFrames, Hero.attackFrames, Hero.hitFrames, Hero.deathFrames, 128, 100, playerSheet);
+            //monster = new Monster(150, 150, Hero.runFrames, Hero.idleFrames, Hero.attackFrames, Hero.hitFrames, Hero.deathFrames, 128, 100, playerSheet);
 
 
             slime = new Slime(100, 100, SlimeMonster.runFrames, SlimeMonster.idleFrames, SlimeMonster.attackFrames, SlimeMonster.hitFrames, SlimeMonster.deathFrames, 64, 100, slimeSheet);
@@ -273,8 +338,8 @@ namespace Survival
             timerMovement.Start();
 
 
-
         }
+
 
         public void OnPaint(object sender, PaintEventArgs e)
         {
@@ -283,13 +348,55 @@ namespace Survival
             slime.PlayAnimation(g);
             dwarf.PlayAnimation(g);
 
-            if (monster != null)
+            /*
+            foreach (Monster monster in monsters)
             {
-                monster.PlayAnimation(g);
+                if (monster != null)
+                    monster.PlayAnimation(g);
             }
+            */
+
+            for (int i = 0; i < monsters.Count; i++)
+            {
+                Monster monster = monsters[i];
+                if (monster != null)
+                {
+                    monster.PlayAnimation(g);
+                }
+            }
+
             player.PlayAnimation(g);
 
         }
+
+        
+
+        private void labelPause_Click(object sender, EventArgs e)
+        {
+            timerMovement.Stop();
+            timerSpawnMonster.Stop();
+            timerDeadMonster.Stop();
+            labelNoPause.Visible = true;
+            labelExit.Visible = true;
+            labelNoPause.BackColor = Color.Transparent;
+            labelExit.BackColor = Color.Transparent;
+        }
+
+        private void labelNoPause_Click(object sender, EventArgs e)
+        {
+            timerMovement.Start();
+            timerSpawnMonster.Start();
+            timerDeadMonster.Start();
+            labelNoPause.Visible = false;
+            labelExit.Visible = false;
+        }
+
+        private void labelExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+   
 
     }
 }
