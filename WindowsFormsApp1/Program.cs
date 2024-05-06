@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Survival.Models;
+using WindowsFormsApp1;
 
 namespace Survival
 {
@@ -14,9 +16,26 @@ namespace Survival
         [STAThread]
         static void Main()
         {
+            /*  
+             *using (GameDBContext context = new GameDBContext())
+               {
+                   User user = new User();
+                   user.Name = "Test";
+                   user.Password = "password";
+                   user.Score = 5;
+                   context.User.Add(user);
+                   context.SaveChanges();
+               }
+             */
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form2());
+
+           
         }
+
+       
+        
+
     }
 }

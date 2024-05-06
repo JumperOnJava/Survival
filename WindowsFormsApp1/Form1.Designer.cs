@@ -34,7 +34,7 @@
             this.timerSpawnMonster = new System.Windows.Forms.Timer(this.components);
             this.timerDeadMonster = new System.Windows.Forms.Timer(this.components);
             this.labelPause = new System.Windows.Forms.Label();
-            this.labelNoPause = new System.Windows.Forms.Label();
+            this.labelGoOn = new System.Windows.Forms.Label();
             this.labelExit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -50,20 +50,20 @@
             this.labelPause.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelPause.Click += new System.EventHandler(this.labelPause_Click);
             // 
-            // labelNoPause
+            // labelGoOn
             // 
-            this.labelNoPause.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelNoPause.BackColor = System.Drawing.Color.Maroon;
-            this.labelNoPause.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.labelNoPause.Image = ((System.Drawing.Image)(resources.GetObject("labelNoPause.Image")));
-            this.labelNoPause.Location = new System.Drawing.Point(301, 144);
-            this.labelNoPause.Name = "labelNoPause";
-            this.labelNoPause.Size = new System.Drawing.Size(242, 52);
-            this.labelNoPause.TabIndex = 2;
-            this.labelNoPause.Text = "Go ";
-            this.labelNoPause.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelNoPause.Visible = false;
-            this.labelNoPause.Click += new System.EventHandler(this.labelNoPause_Click);
+            this.labelGoOn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelGoOn.BackColor = System.Drawing.Color.Maroon;
+            this.labelGoOn.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
+            this.labelGoOn.Image = ((System.Drawing.Image)(resources.GetObject("labelGoOn.Image")));
+            this.labelGoOn.Location = new System.Drawing.Point(301, 144);
+            this.labelGoOn.Name = "labelGoOn";
+            this.labelGoOn.Size = new System.Drawing.Size(243, 52);
+            this.labelGoOn.TabIndex = 2;
+            this.labelGoOn.Text = "Go on";
+            this.labelGoOn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelGoOn.Visible = false;
+            this.labelGoOn.Click += new System.EventHandler(this.labelGoOn_Click);
             // 
             // labelExit
             // 
@@ -85,14 +85,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(852, 778);
+            this.ClientSize = new System.Drawing.Size(851, 777);
             this.Controls.Add(this.labelExit);
-            this.Controls.Add(this.labelNoPause);
+            this.Controls.Add(this.labelGoOn);
             this.Controls.Add(this.labelPause);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(870, 825);
-            this.MinimumSize = new System.Drawing.Size(870, 825);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(869, 824);
+            this.MinimumSize = new System.Drawing.Size(869, 824);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ratopia";
@@ -107,7 +108,7 @@
         private System.Windows.Forms.Timer timerSpawnMonster;
         private System.Windows.Forms.Timer timerDeadMonster;
         private System.Windows.Forms.Label labelPause;
-        private System.Windows.Forms.Label labelNoPause;
+        private System.Windows.Forms.Label labelGoOn;
         private System.Windows.Forms.Label labelExit;
     }
 }

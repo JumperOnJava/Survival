@@ -73,6 +73,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bgGameOver {
+            get {
+                object obj = ResourceManager.GetObject("bgGameOver", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap board {
             get {
                 object obj = ResourceManager.GetObject("board", resourceCulture);
@@ -133,6 +143,16 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap longBoardRed {
+            get {
+                object obj = ResourceManager.GetObject("longBoardRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PauseBoard {
             get {
                 object obj = ResourceManager.GetObject("PauseBoard", resourceCulture);
@@ -153,9 +173,19 @@ namespace WindowsFormsApp1.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Без_названия_2_ {
+        internal static System.Drawing.Bitmap skullBlack {
             get {
-                object obj = ResourceManager.GetObject("Без названия(2)", resourceCulture);
+                object obj = ResourceManager.GetObject("skullBlack", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap skullWhite {
+            get {
+                object obj = ResourceManager.GetObject("skullWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

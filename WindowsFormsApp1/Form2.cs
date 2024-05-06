@@ -22,9 +22,8 @@ namespace Survival
             //Graphics g = Graphics.FromImage(spriteSheet);
             InitializeComponent();
             spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\clouds.png"));
-            //g.DrawImage(spriteSheet, new Rectangle(new Point(300, 300), new Size(300, 300)), 330, 297, 300, 300, GraphicsUnit.Pixel); //tree
+ 
 
-            //pictureBoxCloud1.Image = spriteSheet;
             timerClouds.Interval = 1000;
             timerClouds.Tick += new EventHandler(UpdateClouds);
             timerClouds.Start();
@@ -32,7 +31,6 @@ namespace Survival
 
         private void UpdateClouds(object sender, EventArgs e)
         {
-            //Graphics g = e.Graphics;
 
             if (pictureBoxCloud1.Visible)
             {
