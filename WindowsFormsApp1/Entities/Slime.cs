@@ -83,15 +83,6 @@ namespace Survival.Entities
             this.InputMove(dir);
         }
 
-        public override void Draw(Graphics g)
-        {
-
-            var rect = new Rectangle(new Point((int)pos.X, (int)pos.Y), new Size(currentAnimation.SpriteSize, currentAnimation.SpriteSize ));
-            g.DrawImage(spriteSheet, rect, currentAnimation.XPos, currentAnimation.YPos, currentAnimation.SpriteSize, currentAnimation.SpriteSize, GraphicsUnit.Pixel);
-            if (GetType() == typeof(Player))
-                Console.WriteLine($"{currentAnimation.XPos}, {currentAnimation.YPos}");
-        }
-
         public void SetAnimationConfiguration(Animation animation)
         {
             currentAnimation = animation;

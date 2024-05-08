@@ -13,6 +13,8 @@ namespace Survival.Entities
         public float monsterTimer = 5;
         public bool firstTick = true;
 
+        public override float hitboxSize => 0.0f;
+
         private void SpawnMonster()
         {
             Random rnd = new Random();
@@ -31,11 +33,14 @@ namespace Survival.Entities
                 this.scene.player = new Player(new Vector2(10, 10));
 
                 scene.AddEntities(this.scene.player);
-                scene.AddEntities(new Slime(new Vector2(100, 100)));
+                scene.AddEntities(new PlayerSpriteMonster(new Vector2(200, 200)));
+                //scene.AddEntities(new Slime(new Vector2(300, 300)));
 
                 firstTick = false;
             }
 
+
+            /*
             monsterTimer -= Form1.deltaTime;
 
             if (monsterTimer < 0)
@@ -43,7 +48,7 @@ namespace Survival.Entities
                 SpawnMonster();
                 monsterTimer += 5;
             }
-
+            */
 
         }
     }

@@ -22,13 +22,45 @@ namespace Survival.Entities
         public override float hitboxSize => 32;
 
         public float AttackCooldown = 0;
+
+        public float Attacktimer = 0.5f;
         public Player(Vector2 pos) 
             : base(pos, 100, 200, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
             countKill = 0;
         }
-        
-        
+
+        public override void SetCurrentAnimation()
+        {
+            if (isAttacking)
+            {
+                return;
+            }
+            Attacktimer = 0.5f;
+
+            if (isMoving)
+            {
+                this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
+            }
+            else 
+            {
+                if (Form1.PressedKeys[Keys.Space])
+                {
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+                    isAttacking = true;
+                    return;
+                }
+                if (hurtTimer > 0)
+                {
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, this));
+                }
+                else
+                {
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
+                }
+            }
+
+        }
 
         public void PlayerAttack(AliveEntity monster)
         {
@@ -36,28 +68,28 @@ namespace Survival.Entities
             {
                 monster.isMoving = false;
                 monster.health -= 50;
-                monster.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, this));
-
+                //monster.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, this));
             }
         }
-
-        
+    
         public override void InputMove(Vector2 movement)
         {
             base.InputMove(movement);
+
             if (movement != Vector2.Zero)
             {
                 dir = movement;
-                this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
+                //this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
             }
             else
             {
-                this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
+                //this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
             }
         }
         public override void Update()
         {
             base.Update();
+            Console.WriteLine(this.pos);
 
             if (this.health < 0)
             {
@@ -71,19 +103,41 @@ namespace Survival.Entities
                 (Form1.PressedKeys[Keys.W] ? 0 : 1) +
                 (Form1.PressedKeys[Keys.S] ? 0 : -1)
             );
+
             this.InputMove(playerMovement.Normalized());
+            if (playerMovement != Vector2.Zero)
+            {
+                isMoving = true;
+            }
+            else
+            {
+                isMoving = false;
+            }
+
+
+            if (isAttacking)
+            {
+                this.Attacktimer -= Form1.deltaTime;
+            }
+
+            if (Attacktimer <= 0) 
+            { 
+                isAttacking = false;
+            }
+
+            SetCurrentAnimation();
+            
             this.AttackCooldown -= Form1.deltaTime;
             this.UpdateAnimation();
             if (Form1.PressedKeys[Keys.Space] && AttackCooldown <= 0)
             {
-                this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+                //this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
                 foreach (Entity entity in this.scene.entities) 
                 {
                     if (entity is AliveEntity)
                     {
                         PlayerAttack((AliveEntity)entity);
                     }
-
                 }
                 AttackCooldown = 1;
             }

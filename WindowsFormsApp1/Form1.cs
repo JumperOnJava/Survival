@@ -29,11 +29,6 @@ namespace Survival
         public Corpse corpse;
         public List<Corpse> corpsesImages = new List<Corpse>();
 
-        public int spawnTimer = 0;
-        public int deadTimer = 0;
-        public int spawnInterval = 5000;
-        public int deadInterval = 5000;
-        // public int interval = 5000;
 
         static float TargetFrameRate = 1000;
         

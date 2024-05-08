@@ -11,9 +11,8 @@ namespace Survival.Util
     {
         public static Vector2 Normalized(this Vector2 vector)
         {
-            var len = vector.Length();
-            if (len == 0) return Vector2.Zero;
-            return vector / len;
+            if(vector.Length()==0) return Vector2.Zero;
+            return Vector2.Normalize(vector);
         }
     }
 }

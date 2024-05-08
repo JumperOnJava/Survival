@@ -11,6 +11,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Survival.Entities
 {
@@ -24,10 +25,15 @@ namespace Survival.Entities
         {
             if (this.IntersectsWith(player))
             {
+                isAttacking = true;
                 player.health -= 1;
-                player.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, player));
+                player.Hurt();
+                this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+                //player.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, player));
             }
         }
+
+
            
         public override void Update()
         {
@@ -50,6 +56,36 @@ namespace Survival.Entities
 
             }
         }
+
+        
+        public override void SetCurrentAnimation()
+        {
+            if (isAttacking)
+            {
+                return;
+            }
+            //Attacktimer = 0.5f;
+
+            if (isMoving)
+            {
+                this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
+            }
+            else
+            {
+                if (Form1.PressedKeys[Keys.Space])
+                {
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+                    isAttacking = true;
+                }
+                else
+                {
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
+                }
+            }
+
+        }
+        
+
         public override void UpdateMonsterMovement(Player player)
         {
 
@@ -67,22 +103,18 @@ namespace Survival.Entities
             // Зберегти напрямок руху монстра
             if (moveX == 0 && moveY == -1)
             {
-                //this.direction = 1; // Рух вгору
                 this.Direction = Engine.Direction.Up;
             }
             else if (moveX == 0 && moveY == 1)
             {
-                //this.direction = 0; // Рух вниз
                 this.Direction = Engine.Direction.Down;
             }
             else if ((moveX == 1 && moveY == 0) || (moveX == 1 && moveY == -1) || (moveX == 1 && moveY == 1))
             {
-                //this.direction = 2; // Рух вправо
                 this.Direction = Engine.Direction.Right;
             }
             else if ((moveX == -1 && moveY == 0) || (moveX == -1 && moveY == -1) || (moveX == -1 && moveY == 1))
             {
-                //this.direction = 3; // Рух вліво
                 this.Direction = Engine.Direction.Left;
             }
 
