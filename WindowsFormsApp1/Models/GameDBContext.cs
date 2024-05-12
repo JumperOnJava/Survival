@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Survival.Models
 {
-    public class GameDBContext : DbContext
+    public class GameDbContext : DbContext
     {
         public DbSet<User> User { get; set; }
 
@@ -15,7 +15,7 @@ namespace Survival.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\mssqllocaldb;Initial Catalog=SurvivalGame;Integrated Security=True");
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Survival;Integrated Security=True");
             }
         }
 

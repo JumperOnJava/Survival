@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    public class Corpse : AliveEntity
+    public class Corpse : Entity
     {
         public AliveEntity monster { get; set; }
 
@@ -16,14 +16,13 @@ namespace Survival.Entities
 
         public float timeLeft = 5;
 
-        public Corpse(AliveEntity monster) : base(monster.pos, 1, 1, monster.spriteSheet)
+        public Corpse(AliveEntity monster)
         {
             this.monster = monster;
         }
 
         public override void Update()
         {
-            base.Update();
             timeLeft -= Form1.deltaTime;
             
             if (timeLeft < 0)

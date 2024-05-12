@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,8 @@ namespace Survival.Entities
         public int speed { get; set; }
         public bool isAttacking = false;
 
+        public float AttackCooldown = 0;
+
         public int damage { get; set; }
         public float hurtTimer = 0;
 
@@ -27,8 +30,7 @@ namespace Survival.Entities
         public IAnimationProvider currentAnimation;
         //public Animation currentAnimation = new Animation(1, 1, 1);
 
-        public float R1 = 20;
-        public float R2 = 20;
+        public float Radius;
 
         public Image spriteSheet;
 
@@ -41,28 +43,12 @@ namespace Survival.Entities
             currentAnimation = new AnimationSet(Hero.RUN_ANIMATIONS, this);
         }
 
-
-
-        /*
-        public virtual void InputMove(Vector2 movement)
-        {
-            isMoving = movement.Length() != 0;
-
-            Vector2 newPosition = pos + movement * Form1.deltaTime * speed;
-
-            // Перевірка зіткнення з новою позицією
-            if (!CheckCollision(newPosition))
-            {
-                pos = newPosition; // Перемістимо ентіті, якщо немає зіткнення
-            }
-        }
-        */
-
         public virtual void InputMove(Vector2 movement)
         {
             isMoving = movement.Length() != 0;
             pos += movement * Form1.deltaTime * speed;
         }
+
 
         public void CheckCollision()
         {
@@ -77,49 +63,20 @@ namespace Survival.Entities
                     continue;
                 }
 
-                if (Vector2.Distance(this.pos, entity.pos) < R1 + R2)
+                AliveEntity entity2 = (AliveEntity)entity;
+
+                if (Vector2.Distance(this.pos, entity.pos) < this.Radius + entity2.Radius)
                 {
                     Vector2 mid = (this.pos + entity.pos) / 2;
                     Vector2 O1 = this.pos - mid;
                     Vector2 O2 = entity.pos - mid;
                     O1 = O1.Normalized();
                     O2 = O2.Normalized();
-                    this.pos = (mid + O1) * -0.8f;
-                    entity.pos = (mid + O2) * 0.81f;
+                    this.pos = mid + O1 * this.Radius;
+                    entity.pos = mid + O2 * entity2.Radius;
                 }
 
-
-
             }
-
-
-
-
-            /*
-            // Перевірка зіткнень з іншими ентіті
-            foreach (var entity in this.scene.entities)
-            {
-                // Пропускаємо перевірку самого себе
-                if (entity == this)
-                    continue;
-                var rect = new RectangleF(0, 0, 20, 20);
-                rect.IntersectsWith()
-
-                
-                if (newPos.X < entity.pos.X + entity.hitboxSize &&
-                    newPos.X + hitboxSize > entity.pos.X &&
-                    newPos.Y < entity.pos.Y + entity.hitboxSize &&
-                    newPos.Y + hitboxSize > entity.pos.Y)
-                {
-                    // Якщо є зіткнення, повертаємо true
-                    return true;
-                }
-                
-
-            }
-            // Якщо зіткнень не виявлено, повертаємо false
-            return false;
-            */
         }
 
 
@@ -153,10 +110,36 @@ namespace Survival.Entities
 
         public virtual void Hurt()
         {
-            damage = 10;
+            //damage = 10;
             hurtTimer = 4 / 6f;
 
         }
+
+
+        // Method to apply knockback to the entity
+        public void ApplyKnockback(Vector2 knockback)
+        {
+            pos -= knockback;
+        }
+
+        // Method to handle taking damage and knockback
+        public void TakeDamageAndKnockback(int damage, Vector2 attackerPosition)
+        {
+            health -= damage;
+            Vector2 knockback = CalculateKnockbackVector(attackerPosition);
+            ApplyKnockback(knockback);
+            //Hurt(); // Trigger any additional hurt-related effects (e.g., animations)
+        }
+
+        // Method to calculate knockback vector
+        public Vector2 CalculateKnockbackVector(Vector2 attackerPosition)
+        {
+            Vector2 direction = Vector2.Normalize(pos - attackerPosition);
+            float knockbackForce = 40; // Adjust as needed
+            return direction * knockbackForce;
+        }
+
+
 
         public override void Update()
         {

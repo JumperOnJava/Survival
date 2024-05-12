@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using Survival.Util;
 using Survival.Engine;
 using System.Threading;
+using System.IdentityModel.Metadata;
 
 namespace Survival.Entities
 {
@@ -18,16 +19,18 @@ namespace Survival.Entities
     {
         public int countKill { get; set; }
         public Vector2 dir = Vector2.Zero;
+        public int numHeart = 5;
+        public int[] arrHearts = new int[5] { 1, 1, 1, 1, 1 };
        
         public override float hitboxSize => 32;
 
-        public float AttackCooldown = 0;
-
         public float Attacktimer = 0.5f;
+
         public Player(Vector2 pos) 
             : base(pos, 100, 200, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
             countKill = 0;
+            Radius = 15;
         }
 
         public override void SetCurrentAnimation()
@@ -64,11 +67,11 @@ namespace Survival.Entities
 
         public void PlayerAttack(AliveEntity monster)
         {
-            if (this.IntersectsWith(monster) && monster.health > 0)
+            if ((Vector2.Distance(this.pos, monster.pos) <= 100) && monster.health > 0 )
             {
                 monster.isMoving = false;
                 monster.health -= 50;
-                //monster.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, this));
+                
             }
         }
     
@@ -91,7 +94,7 @@ namespace Survival.Entities
             base.Update();
             Console.WriteLine(this.pos);
 
-            if (this.health < 0)
+            if (this.numHeart <= 0)
             {
                 this.scene.gameOver = true;
             }
@@ -131,7 +134,6 @@ namespace Survival.Entities
             this.UpdateAnimation();
             if (Form1.PressedKeys[Keys.Space] && AttackCooldown <= 0)
             {
-                //this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
                 foreach (Entity entity in this.scene.entities) 
                 {
                     if (entity is AliveEntity)

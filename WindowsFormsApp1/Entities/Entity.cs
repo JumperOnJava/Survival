@@ -16,7 +16,7 @@ namespace Survival.Entities
     {
         public Vector2 pos = Vector2.Zero;
 
-        public abstract float hitboxSize { get; }
+        public virtual float hitboxSize { get; }
 
         internal Form1 scene;
    

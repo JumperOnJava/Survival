@@ -18,18 +18,33 @@ namespace Survival.Entities
     internal class PlayerSpriteMonster : Monster
     {
         public float attackTimer {  get; set; }
+        public override float hitboxSize => 32;
+
         public PlayerSpriteMonster(Vector2 pos) : base(pos, 100, 100, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
+            Radius = 15;
         }
         public void TryAttack(Player player)
         {
             if (this.IntersectsWith(player))
             {
                 isAttacking = true;
-                player.health -= 1;
-                player.Hurt();
-                this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
-                //player.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, player));
+                //player.health -= 1;
+                if (player.numHeart > 0)
+                {
+                    player.numHeart -= 1;
+                    player.arrHearts[player.numHeart] = 0;
+                    player.Hurt();
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+
+
+                    Vector2 knockback = CalculateKnockbackVector(player.pos);
+                    player.ApplyKnockback(knockback);
+
+                    this.AttackCooldown = 1.5f;
+                }
+                //this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+             
             }
         }
 
@@ -39,7 +54,16 @@ namespace Survival.Entities
         {
             base.Update();
             UpdateMonsterMovement(scene.player);
-            this.TryAttack(scene.player);
+
+            this.AttackCooldown -= Form1.deltaTime;
+
+            if (this.AttackCooldown <= 0)
+            {
+                this.TryAttack(scene.player);
+               
+            }
+
+            
         }
         public override void DetermineMonsterAnimation(Player player)
         {

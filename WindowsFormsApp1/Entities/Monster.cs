@@ -16,7 +16,7 @@ namespace Survival.Entities
     {
         //public bool isDead;
 
-        public override float hitboxSize => 32;
+        //public override float hitboxSize => 32;
 
         public Monster(Vector2 pos, int health, int speed, Image spriteSheet) : base(pos, health, speed, spriteSheet)
         {
@@ -32,6 +32,7 @@ namespace Survival.Entities
             base.Update();
             if (this.health <= 0)
             {
+                this.scene.score++;
                 this.RemoveEntity();
                 this.scene.AddEntities(new Corpse(this));
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survival.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,22 +15,33 @@ namespace Survival
 {
     public partial class Form2 : Form
     {
+        public User currrentUser {  get; set; }
         public static Image spriteSheet;
         public bool ok = true;
-        Random rnd = new Random();
+
         public Form2()
         {
-            //Graphics g = Graphics.FromImage(spriteSheet);
             InitializeComponent();
-            spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\clouds.png"));
- 
+            CloudsMove();
 
+        }
+
+        public Form2(User user)
+        {
+            InitializeComponent();
+            currrentUser = user;
+            labelUserLogin.Text = $"Hi, {user.Name}";
+            CloudsMove();
+        }
+
+        public void CloudsMove()
+        {
             timerClouds.Interval = 1000;
             timerClouds.Tick += new EventHandler(UpdateClouds);
             timerClouds.Start();
         }
 
-        private void UpdateClouds(object sender, EventArgs e)
+            private void UpdateClouds(object sender, EventArgs e)
         {
 
             if (pictureBoxCloud1.Visible)
@@ -60,6 +72,7 @@ namespace Survival
                 pictureBoxCloud3.Visible = false;
                 pictureBoxCloud4.Visible = false;
             }
+
         }
 
         private void labelStart_Click(object sender, EventArgs e)
@@ -74,7 +87,7 @@ namespace Survival
 
 
 
-        private void labelExit_Click(object sender, EventArgs e)
+        private void labelQuit_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -89,17 +102,32 @@ namespace Survival
             labelStart.ForeColor = SystemColors.ControlText;
         }
 
-        private void labelExit_MouseEnter(object sender, EventArgs e)
+        private void labelQuit_MouseEnter(object sender, EventArgs e)
         {
-            labelExit.ForeColor = Color.White;
+            labelQuit.ForeColor = Color.White;
         }
 
-        private void labelExit_MouseLeave(object sender, EventArgs e)
+        private void labelQuit_MouseLeave(object sender, EventArgs e)
         {
-            labelExit.ForeColor = SystemColors.ControlText;
+            labelQuit.ForeColor = SystemColors.ControlText;
         }
 
+        private void labelJoin_Click(object sender, EventArgs e)
+        {
+            Form4 form4 = new Form4(this);
+            form4.Show();
 
+            this.Hide();
+        }
 
+        private void labelJoin_MouseEnter(object sender, EventArgs e)
+        {
+            labelJoin.ForeColor = Color.White;
+        }
+
+        private void labelJoin_MouseLeave(object sender, EventArgs e)
+        {
+            labelJoin.ForeColor = SystemColors.ControlText;
+        }
     }
 }
