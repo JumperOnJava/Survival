@@ -18,20 +18,54 @@ namespace Survival.Entities
 
         public virtual float hitboxSize { get; }
 
-        internal Form1 scene;
-   
+        public int size {  get; set; }
 
+        internal Form1 scene => Form1.ActiveScene;
+
+
+        protected Entity parent;
+        List<Entity> children = new List<Entity>();
+
+        public Entity(Entity parent)
+        {
+            this.parent = parent;
+            this.scene.AddEntities(this);
+            if (parent != null)
+            {
+                this.parent.children.Add(this);
+            }
+
+        }
+   
         public void RemoveEntity()
         {
             this.scene.RemoveEntity(this);
+            this.children.ForEach(e => e.RemoveEntity());
+            if(parent!= null)
+                this.parent.children.Remove(this);
         }
 
 
-        public abstract void Update();
+        protected virtual void SetParent(Entity entity)
+        {
+            this.parent = entity;
+        }
+
+        public void BaseUpdate()
+        {
+            Update();
+            children.ForEach(e=>e.BaseUpdate());
+        }
+        protected abstract void Update();
 
         public virtual void Draw(Graphics g)
         {
 
+        }
+
+        public bool HasParent()
+        {
+            return parent != null;
         }
     }
 }

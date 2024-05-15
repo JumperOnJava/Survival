@@ -40,6 +40,8 @@
             this.pictureBoxCloud4 = new System.Windows.Forms.PictureBox();
             this.labelJoin = new System.Windows.Forms.Label();
             this.labelUserLogin = new System.Windows.Forms.Label();
+            this.labelLeaders = new System.Windows.Forms.Label();
+            this.labelLogin = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCloud1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxCloud2)).BeginInit();
@@ -146,7 +148,7 @@
             this.labelJoin.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelJoin.ForeColor = System.Drawing.Color.Black;
             this.labelJoin.Image = global::Survival.Properties.Resources.PauseBoard1;
-            this.labelJoin.Location = new System.Drawing.Point(18, 698);
+            this.labelJoin.Location = new System.Drawing.Point(30, 691);
             this.labelJoin.Name = "labelJoin";
             this.labelJoin.Size = new System.Drawing.Size(112, 67);
             this.labelJoin.TabIndex = 11;
@@ -162,12 +164,46 @@
             this.labelUserLogin.BackColor = System.Drawing.Color.Transparent;
             this.labelUserLogin.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelUserLogin.ForeColor = System.Drawing.Color.White;
-            this.labelUserLogin.Location = new System.Drawing.Point(133, 701);
+            this.labelUserLogin.Location = new System.Drawing.Point(154, 678);
             this.labelUserLogin.Name = "labelUserLogin";
-            this.labelUserLogin.Size = new System.Drawing.Size(369, 58);
+            this.labelUserLogin.Size = new System.Drawing.Size(369, 91);
             this.labelUserLogin.TabIndex = 12;
             this.labelUserLogin.Text = "Hi, guest";
             this.labelUserLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelLeaders
+            // 
+            this.labelLeaders.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelLeaders.BackColor = System.Drawing.Color.Transparent;
+            this.labelLeaders.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
+            this.labelLeaders.ForeColor = System.Drawing.Color.Black;
+            this.labelLeaders.Image = global::Survival.Properties.Resources.PauseBoard1;
+            this.labelLeaders.Location = new System.Drawing.Point(30, 495);
+            this.labelLeaders.Name = "labelLeaders";
+            this.labelLeaders.Size = new System.Drawing.Size(112, 67);
+            this.labelLeaders.TabIndex = 13;
+            this.labelLeaders.Text = "Stars";
+            this.labelLeaders.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLeaders.Click += new System.EventHandler(this.labelLeaders_Click);
+            this.labelLeaders.MouseEnter += new System.EventHandler(this.labelLeaders_MouseEnter);
+            this.labelLeaders.MouseLeave += new System.EventHandler(this.labelLeaders_MouseLeave);
+            // 
+            // labelLogin
+            // 
+            this.labelLogin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelLogin.BackColor = System.Drawing.Color.Transparent;
+            this.labelLogin.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
+            this.labelLogin.ForeColor = System.Drawing.Color.Black;
+            this.labelLogin.Image = global::Survival.Properties.Resources.PauseBoard1;
+            this.labelLogin.Location = new System.Drawing.Point(30, 595);
+            this.labelLogin.Name = "labelLogin";
+            this.labelLogin.Size = new System.Drawing.Size(112, 67);
+            this.labelLogin.TabIndex = 14;
+            this.labelLogin.Text = "Login";
+            this.labelLogin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLogin.Click += new System.EventHandler(this.labelLogin_Click);
+            this.labelLogin.MouseEnter += new System.EventHandler(this.labelLogin_MouseEnter);
+            this.labelLogin.MouseLeave += new System.EventHandler(this.labelLogin_MouseLeave);
             // 
             // Form2
             // 
@@ -176,6 +212,9 @@
             this.AutoSize = true;
             this.BackgroundImage = global::Survival.Properties.Resources.Home;
             this.ClientSize = new System.Drawing.Size(852, 778);
+            this.Controls.Add(this.labelUserLogin);
+            this.Controls.Add(this.labelLogin);
+            this.Controls.Add(this.labelLeaders);
             this.Controls.Add(this.labelJoin);
             this.Controls.Add(this.pictureBoxCloud4);
             this.Controls.Add(this.pictureBoxCloud3);
@@ -184,7 +223,6 @@
             this.Controls.Add(this.labelQuit);
             this.Controls.Add(this.labelStart);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.labelUserLogin);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(870, 825);
             this.MinimumSize = new System.Drawing.Size(870, 825);
@@ -211,5 +249,7 @@
         private System.Windows.Forms.PictureBox pictureBoxCloud4;
         private System.Windows.Forms.Label labelJoin;
         private System.Windows.Forms.Label labelUserLogin;
+        private System.Windows.Forms.Label labelLeaders;
+        private System.Windows.Forms.Label labelLogin;
     }
 }

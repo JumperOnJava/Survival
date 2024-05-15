@@ -18,27 +18,10 @@ namespace Survival
         [STAThread]
         static void Main()
         {
-           /*
-            using (GameDbContext context = new GameDbContext())
-               {
-                   User user = new User();
-                   user.Name = "Test1";
-                   user.Password = "Test12";
-                   user.Score = 7;
-                   context.User.Add(user);
-                   context.SaveChanges();
-               }
-            */
-             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form5());
-
-           
-        }
-
-       
-        
+            Application.Run(new Form2());       
+        }        
 
     }
 }

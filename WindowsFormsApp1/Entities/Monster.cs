@@ -1,4 +1,5 @@
 ﻿using Survival.Models;
+using Survival.Util;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,8 +15,6 @@ namespace Survival.Entities
 {
     public abstract class Monster : AliveEntity
     {
-        //public bool isDead;
-
         //public override float hitboxSize => 32;
 
         public Monster(Vector2 pos, int health, int speed, Image spriteSheet) : base(pos, health, speed, spriteSheet)
@@ -27,7 +26,7 @@ namespace Survival.Entities
 
         public abstract void UpdateMonsterMovement(Player player);
 
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
             if (this.health <= 0)
@@ -45,6 +44,7 @@ namespace Survival.Entities
                 this.DetermineMonsterAnimation(scene.player);
             }
         }
+
 
     }
 }

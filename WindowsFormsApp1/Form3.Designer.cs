@@ -35,8 +35,8 @@
             this.labelQuit = new System.Windows.Forms.Label();
             this.labelScore = new System.Windows.Forms.Label();
             this.labelRecord = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelRestart = new System.Windows.Forms.Label();
+            this.labelLeaders = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSkull)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,7 +56,7 @@
             this.labelQuit.BackColor = System.Drawing.Color.Transparent;
             this.labelQuit.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelQuit.Image = global::Survival.Properties.Resources.longBoard;
-            this.labelQuit.Location = new System.Drawing.Point(133, 641);
+            this.labelQuit.Location = new System.Drawing.Point(128, 639);
             this.labelQuit.Name = "labelQuit";
             this.labelQuit.Size = new System.Drawing.Size(249, 57);
             this.labelQuit.TabIndex = 1;
@@ -73,7 +73,7 @@
             this.labelScore.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelScore.ForeColor = System.Drawing.Color.White;
             this.labelScore.Image = global::Survival.Properties.Resources.longBoardRed;
-            this.labelScore.Location = new System.Drawing.Point(133, 489);
+            this.labelScore.Location = new System.Drawing.Point(127, 466);
             this.labelScore.Name = "labelScore";
             this.labelScore.Size = new System.Drawing.Size(249, 57);
             this.labelScore.TabIndex = 2;
@@ -87,38 +87,45 @@
             this.labelRecord.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelRecord.ForeColor = System.Drawing.Color.White;
             this.labelRecord.Image = global::Survival.Properties.Resources.longBoardRed;
-            this.labelRecord.Location = new System.Drawing.Point(133, 427);
+            this.labelRecord.Location = new System.Drawing.Point(127, 404);
             this.labelRecord.Name = "labelRecord";
             this.labelRecord.Size = new System.Drawing.Size(249, 57);
             this.labelRecord.TabIndex = 3;
             this.labelRecord.Text = "New Record!";
             this.labelRecord.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRecord.Visible = false;
             // 
-            // label1
+            // labelRestart
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.label1.Image = global::Survival.Properties.Resources.longBoard;
-            this.label1.Location = new System.Drawing.Point(133, 570);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 57);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Restart";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRestart.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRestart.BackColor = System.Drawing.Color.Transparent;
+            this.labelRestart.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
+            this.labelRestart.Image = global::Survival.Properties.Resources.longBoard;
+            this.labelRestart.Location = new System.Drawing.Point(127, 565);
+            this.labelRestart.Name = "labelRestart";
+            this.labelRestart.Size = new System.Drawing.Size(249, 57);
+            this.labelRestart.TabIndex = 4;
+            this.labelRestart.Text = "Restart";
+            this.labelRestart.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelRestart.Click += new System.EventHandler(this.labelRestart_Click);
+            this.labelRestart.MouseEnter += new System.EventHandler(this.labelRestart_MouseEnter);
+            this.labelRestart.MouseLeave += new System.EventHandler(this.labelRestart_MouseLeave);
             // 
-            // label2
+            // labelLeaders
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.BackColor = System.Drawing.Color.Transparent;
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.label2.Image = global::Survival.Properties.Resources.longBoard;
-            this.label2.Location = new System.Drawing.Point(615, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(249, 57);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Stars";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLeaders.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelLeaders.BackColor = System.Drawing.Color.Transparent;
+            this.labelLeaders.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
+            this.labelLeaders.Image = global::Survival.Properties.Resources.PauseBoard1;
+            this.labelLeaders.Location = new System.Drawing.Point(658, 29);
+            this.labelLeaders.Name = "labelLeaders";
+            this.labelLeaders.Size = new System.Drawing.Size(249, 57);
+            this.labelLeaders.TabIndex = 5;
+            this.labelLeaders.Text = "Stars";
+            this.labelLeaders.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelLeaders.Click += new System.EventHandler(this.labelLeaders_Click);
+            this.labelLeaders.MouseEnter += new System.EventHandler(this.labelLeaders_MouseEnter);
+            this.labelLeaders.MouseLeave += new System.EventHandler(this.labelLeaders_MouseLeave);
             // 
             // Form3
             // 
@@ -126,8 +133,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(851, 777);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelLeaders);
+            this.Controls.Add(this.labelRestart);
             this.Controls.Add(this.labelRecord);
             this.Controls.Add(this.labelScore);
             this.Controls.Add(this.labelQuit);
@@ -150,7 +157,7 @@
         private System.Windows.Forms.Label labelQuit;
         private System.Windows.Forms.Label labelScore;
         private System.Windows.Forms.Label labelRecord;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelRestart;
+        private System.Windows.Forms.Label labelLeaders;
     }
 }

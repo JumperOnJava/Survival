@@ -17,53 +17,62 @@ namespace Survival.Entities
 {
     internal class PlayerSpriteMonster : Monster
     {
-        public float attackTimer {  get; set; }
+        public float Attacktimer = 0.5f;
         public override float hitboxSize => 32;
 
-        public PlayerSpriteMonster(Vector2 pos) : base(pos, 100, 100, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
+        public PlayerSpriteMonster(Vector2 pos) : base(pos, 5, 100, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
-            Radius = 15;
+            Radius = 30;
+            new Hitbox(this,(int)Radius);
+
         }
         public void TryAttack(Player player)
         {
             if (this.IntersectsWith(player))
             {
                 isAttacking = true;
-                //player.health -= 1;
-                if (player.numHeart > 0)
-                {
-                    player.numHeart -= 1;
-                    player.arrHearts[player.numHeart] = 0;
-                    player.Hurt();
-                    this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
+                player.Hurt();
+                this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
 
+                Vector2 knockback = CalculateKnockbackVector(player.pos);
+                //player.ApplyKnockback(knockback);
 
-                    Vector2 knockback = CalculateKnockbackVector(player.pos);
-                    player.ApplyKnockback(knockback);
-
-                    this.AttackCooldown = 1.5f;
-                }
+                this.AttackCooldown = 1.5f;
                 //this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
-             
+
             }
         }
-
-
            
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
-            UpdateMonsterMovement(scene.player);
+            //UpdateMonsterMovement(scene.player);
+
+
+            if (this.hurtTimer > 0)
+            {
+                isMoving = false;
+            }
+
+            if (isAttacking)
+            {
+                this.Attacktimer -= Form1.deltaTime;
+            }
+
+            if (Attacktimer <= 0)
+            {
+                isAttacking = false;
+            }
 
             this.AttackCooldown -= Form1.deltaTime;
 
             if (this.AttackCooldown <= 0)
             {
-                this.TryAttack(scene.player);
-               
+                this.TryAttack(scene.player);              
             }
 
-            
+            UpdateMonsterMovement(scene.player);
+
         }
         public override void DetermineMonsterAnimation(Player player)
         {
@@ -74,14 +83,17 @@ namespace Survival.Entities
             {
                 this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
             }
+            else if (this.hurtTimer > 0)
+            {
+                this.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, this));
+            }
             else
             {
                 this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
-
             }
         }
 
-        
+        /*
         public override void SetCurrentAnimation()
         {
             if (isAttacking)
@@ -96,10 +108,15 @@ namespace Survival.Entities
             }
             else
             {
+                
                 if (Form1.PressedKeys[Keys.Space])
                 {
                     this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
                     isAttacking = true;
+                }
+                if (this.hurtTimer > 0)
+                {
+                    this.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, this));
                 }
                 else
                 {
@@ -108,6 +125,7 @@ namespace Survival.Entities
             }
 
         }
+        */
         
 
         public override void UpdateMonsterMovement(Player player)
@@ -119,7 +137,6 @@ namespace Survival.Entities
             int moveX = Math.Sign((int)dx); // Рухатись в напрямку гравця по осі X
             int moveY = Math.Sign((int)dy); // Рухатись в напрямку гравця по осі Y
 
-            // Задати напрямок руху створіння
             Vector2 dir;
             dir.X = moveX;
             dir.Y = moveY;
@@ -142,8 +159,11 @@ namespace Survival.Entities
                 this.Direction = Engine.Direction.Left;
             }
 
-            this.InputMove(dir);
-
+            if (isMoving)
+            {
+                this.InputMove(dir);
+            }
+           
         }
     }
 }

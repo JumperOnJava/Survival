@@ -12,43 +12,32 @@ namespace Survival.Entities
 {
     public class Heart : Entity
     {
-        public Image spriteSheet;
+        public Image spriteSheet { get; set; }
         public bool filled = true;
-        public int order;
+        public int order {  get; set; }
 
         public Heart(Vector2 pos, int order) : this(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\heart.png")))
         {
             this.order = order;
-            //this.pos = pos;
-            //this.spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\heart.png"));
-
         }
 
-
-        public Heart(Vector2 pos, Image spriteSheet)
+        public Heart(Vector2 pos, Image spriteSheet) : base(null)
         {
             this.pos = pos;
             this.spriteSheet = spriteSheet;
         }
 
-
-
-        public override void Update()
+        protected override void Update()
         {
             if (this.scene.player.arrHearts[this.order] == 1)
             {
                 this.filled = true;
             }
             else this.filled = false;
-
-
-
-
         }
 
         public override void Draw(Graphics g)
         {
-
             var rect = new Rectangle(new Point((int)pos.X, (int)pos.Y), new Size(35, 30));
             if (filled)
                 g.DrawImage(spriteSheet, rect, 0, 12, 12, 10, GraphicsUnit.Pixel);
@@ -57,6 +46,5 @@ namespace Survival.Entities
                 g.DrawImage(spriteSheet, rect, 12, 12, 12, 10, GraphicsUnit.Pixel);
             }
         }
-
     }
 }

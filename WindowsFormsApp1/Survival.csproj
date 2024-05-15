@@ -266,17 +266,21 @@
     <Compile Include="Engine\Animation.cs" />
     <Compile Include="Engine\AnimationSet.cs" />
     <Compile Include="Controllers\IAnimationProvidercs.cs" />
-    <Compile Include="Engine\Scene.cs" />
     <Compile Include="Entities\AliveEntity.cs" />
+    <Compile Include="Entities\Block.cs" />
     <Compile Include="Entities\Corpse.cs" />
-    <Compile Include="Entities\Dwarf.cs" />
+    <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Heart.cs" />
+    <Compile Include="Entities\Hitbox.cs" />
+    <Compile Include="Entities\MapEntity.cs" />
     <Compile Include="Entities\Monster.cs" />
     <Compile Include="Entities\Player.cs" />
     <Compile Include="Entities\PlayerSpriteMonster.cs" />
+    <Compile Include="Entities\Shop.cs" />
     <Compile Include="Entities\Slime.cs" />
     <Compile Include="Entities\StartEntity.cs" />
+    <Compile Include="Entities\Tree.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,6 +311,12 @@
     <Compile Include="Form5.Designer.cs">
       <DependentUpon>Form5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form6.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form6.Designer.cs">
+      <DependentUpon>Form6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\20240512003534_InitialMigration.cs" />
     <Compile Include="Migrations\20240512003534_InitialMigration.Designer.cs">
       <DependentUpon>20240512003534_InitialMigration.cs</DependentUpon>
@@ -333,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form5.resx">
       <DependentUpon>Form5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form6.resx">
+      <DependentUpon>Form6.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -381,8 +394,13 @@
     <None Include="Resources\wideBoard.png" />
     <None Include="Resources\longBoardWider.png" />
     <None Include="Resources\space.png" />
+    <None Include="Resources\wood.png" />
+    <None Include="Resources\shop.png" />
+    <None Include="Resources\shop %281%29.png" />
+    <Content Include="Music\2020-03-22_-_A_Bit_Of_Hope_-_David_Fesliyan.wav" />
     <Content Include="Sprites\clouds.png" />
     <Content Include="Sprites\dwarf.png" />
+    <Content Include="Sprites\farmObjects.png" />
     <Content Include="Sprites\Forest.png" />
     <Content Include="Sprites\heart.png" />
     <Content Include="Sprites\player.png" />

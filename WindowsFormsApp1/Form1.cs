@@ -16,23 +16,29 @@ using System.IdentityModel.Metadata;
 
 namespace Survival
 {
-    public partial class Form1 : Form
+    public partial class Form1 : System.Windows.Forms.Form
     {
         Random rnd = new Random();
         public bool gameOver = false;
         public Player player;
+        public bool isShopOpen = false;
+
         public int score = 0;
+        public int treesCount = 0;
+        public int woodCount = 0;
         public User user {  get; set; }
         //public Entity monster;
-        public List<Entity> entities = new List<Entity>();
-        public List<Entity> removeNextTick = new List<Entity>();
-        public List<Entity> addNextTick = new List<Entity>();
+        public HashSet<Entity> entities =       new HashSet<Entity>();
+        public HashSet<Entity> removeNextTick = new HashSet<Entity>();
+        public HashSet<Entity> addNextTick =    new HashSet<Entity>();
+        public HashSet<Entity> updateNextTick = new HashSet<Entity>();
+        //public List<Tree> trees = new List<Tree>();
 
         public Corpse corpse;
         public List<Corpse> corpsesImages = new List<Corpse>();
 
+        public static Form1 ActiveScene;
         //public Heart heart;
-        public List<Heart> hearts = new List<Heart>();
 
         static float TargetFrameRate = 1000;
         
@@ -44,19 +50,19 @@ namespace Survival
         public Form1(Form2 form2)
         {
             Constructor();
-            user = form2.currrentUser;
+            user = form2.currentUser;
         }
 
         public Form1(User user)
         {
             Constructor();
             this.user = user;
-
         }
 
         public void Constructor()
         {
             InitializeComponent();
+            ActiveScene = this;
 
             foreach (Keys keys in Enum.GetValues(typeof(Keys)))
             {
@@ -75,10 +81,15 @@ namespace Survival
         public void RemoveEntity(Entity entity)
         {
             removeNextTick.Add(entity);
-
         }
 
-
+        public void UpdateEntity()
+        {
+            foreach (var entity in entities)
+            {
+                updateNextTick.Add(entity);
+            }            
+        }
 
         public static Dictionary<Keys,bool> PressedKeys = new Dictionary<Keys,bool>();
         private void FreeKeyboard(object sender, KeyEventArgs e)
@@ -97,7 +108,8 @@ namespace Survival
         void DeltaUpdate(object sender, EventArgs e)
         {
             Watch.Stop();
-            labelnumKilled.Text = score.ToString();
+            labelKilledCount.Text = score.ToString();
+            labelWoodCount.Text = woodCount.ToString();
             deltaTime = Watch.ElapsedMilliseconds / 1000f;
             Tick();
             Watch.Restart();
@@ -105,23 +117,43 @@ namespace Survival
 
         public void Tick()
         {
+            foreach (var entity in removeNextTick)
+            {
+                entities.Remove(entity);
+            }
+
             foreach (var entity in addNextTick)
             {
-                entities.Add(entity);
+                if(!entity.HasParent())
+                    entities.Add(entity);
             }
 
             addNextTick.Clear();
 
-            foreach (var entity in entities)
+            UpdateEntity();
+
+
+            foreach (var entity in updateNextTick)
             {
-                entity.Update();
+                if (entity is Tree)
+                {
+                    Tree tree = (Tree)entity;
+                    if (tree.isCutted)
+                    {
+                        woodCount += 3;
+                    }
+                    entity.BaseUpdate();
+                }
+                else
+                    entity.BaseUpdate();
+               // else if (entity is Tree && entity == null) woodCount++;
+
             }
+
+
+            updateNextTick.Clear();
             
-            foreach (var entity in removeNextTick)
-            {
-                entities.Remove(entity);
-                
-            }
+           
 
             if (score >= 5 && score < 10)
             {
@@ -134,10 +166,9 @@ namespace Survival
                 labelLevel.ForeColor = Color.Firebrick;
             }
 
-            foreach (Heart heart in hearts)
-            {
-                heart.Update();
-            }
+
+            //labelWoodCount.Text = woodCount.ToString();
+
 
             Invalidate();
 
@@ -147,13 +178,11 @@ namespace Survival
                 timerMovement.Stop();
                 timerSpawnMonster.Stop();
                 Watch.Stop();
+                //MapController.map = MapController.GetMap();
                 Form3 form3 = new Form3(this);
                 form3.Show();
-                this.Hide();
-
-            }
-            
-
+                this.Dispose();
+            }           
         }
 
         public void Init()
@@ -171,57 +200,40 @@ namespace Survival
 
         public void AddEntities(Entity entity)
         {
+            //entity.scene = this;
             addNextTick.Add(entity);
-            entity.scene = this;
-
-            if (entity is Heart heart)
-            {
-                heart.scene = this;
-            }
         }
 
         public void OnPaint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
+
+            new List<Entity>(entities).Sort((e1, e2) => e1.pos.Y.CompareTo(e2.pos.Y));
+           
+
             MapController.DrawMap(g);
             foreach(Entity entity in entities)
             {
                 entity.Draw(g);
             }
 
-
+            /*
             foreach(Heart heart in hearts)
             {
                 heart.Draw(g);
-            }
+            }*/
             
         }
-        private void labelPause_Click(object sender, EventArgs e)
-        {
-            timerMovement.Stop();
-            timerSpawnMonster.Stop();
-            timerDeadMonster.Stop();
-            Watch.Stop();
-            labelGoOn.Visible = true;
-            labelExit.Visible = true;
-            labelGoOn.BackColor = Color.Transparent;
-            labelExit.BackColor = Color.Transparent;
-        }
 
-        private void labelGoOn_Click(object sender, EventArgs e)
+        private void labelResume_Click(object sender, EventArgs e)
         {
             timerMovement.Start();
             timerSpawnMonster.Start();
             timerDeadMonster.Start();
             Watch.Start();
-            labelGoOn.Visible = false;
-            labelExit.Visible = false;
+            labelResume.Visible = false;
+            labelQuit.Visible = false;
         }
-        private void labelExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void labelPause_MouseEnter(object sender, EventArgs e)
         {
             labelPause.ForeColor = Color.White;
@@ -232,17 +244,59 @@ namespace Survival
             labelPause.ForeColor = SystemColors.ControlText;
         }
 
-        private void labelKilled_Click(object sender, EventArgs e)
+        private void labelResume_MouseEnter(object sender, EventArgs e)
+        {
+            labelResume.ForeColor = Color.White;
+        }
+
+        private void labelResume_MouseLeave(object sender, EventArgs e)
+        {
+            labelResume.ForeColor = SystemColors.ControlText;
+        }
+
+        private void labelQuit_Click(object sender, EventArgs e)
+        {
+            Form2 form2;
+            if (this.user != null)
+            {
+                form2 = new Form2(this.user);
+            }
+            else
+            {
+                form2 = new Form2();
+            }
+            form2.Show();
+            this.Dispose();
+        }
+
+        private void labelQuit_MouseEnter(object sender, EventArgs e)
+        {
+            labelQuit.ForeColor = Color.White;
+        }
+
+        private void labelQuit_MouseLeave(object sender, EventArgs e)
+        {
+            labelQuit.ForeColor = SystemColors.ControlText;
+        }
+
+        private void labelPause_Click(object sender, EventArgs e)
+        {
+            timerMovement.Stop();
+            timerSpawnMonster.Stop();
+            timerDeadMonster.Stop();
+            Watch.Stop();
+            labelResume.Visible = true;
+            labelQuit.Visible = true;
+            labelResume.BackColor = Color.Transparent;
+            labelQuit.BackColor = Color.Transparent;
+        }
+
+        private void labelWood_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void labelnumKilled_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelLevelName_Click(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
 
         }

@@ -16,12 +16,12 @@ namespace Survival.Entities
 
         public float timeLeft = 5;
 
-        public Corpse(AliveEntity monster)
+        public Corpse(AliveEntity monster) : base(null)
         {
             this.monster = monster;
         }
 
-        public override void Update()
+        protected override void Update()
         {
             timeLeft -= Form1.deltaTime;
             
@@ -32,12 +32,8 @@ namespace Survival.Entities
             
         }
 
-
         public override void Draw(Graphics g)
         {
-            //monster.SetAnimationConfiguration(monster.currentAnimation.GetAnimation(monster.dirStr, "Death"));
-            //monster.Draw(g);
-
             var rect = new Rectangle(new Point((int)monster.pos.X, (int)monster.pos.Y), new Size(monster.currentAnimation.SpriteSize, monster.currentAnimation.SpriteSize));
             g.DrawImage(monster.spriteSheet, rect, monster.currentAnimation.SpriteSize * 7, monster.currentAnimation.SpriteSize * 16, monster.currentAnimation.SpriteSize, monster.currentAnimation.SpriteSize, GraphicsUnit.Pixel);
 

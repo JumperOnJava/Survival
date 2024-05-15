@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
             this.labelTop1 = new System.Windows.Forms.Label();
             this.labelTop2 = new System.Windows.Forms.Label();
             this.labelTop4 = new System.Windows.Forms.Label();
@@ -42,65 +43,65 @@
             // 
             this.labelTop1.BackColor = System.Drawing.Color.Transparent;
             this.labelTop1.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.labelTop1.ForeColor = System.Drawing.Color.Gold;
+            this.labelTop1.ForeColor = System.Drawing.Color.Yellow;
             this.labelTop1.Image = global::Survival.Properties.Resources.longBoardRed;
             this.labelTop1.Location = new System.Drawing.Point(296, 236);
             this.labelTop1.Name = "labelTop1";
             this.labelTop1.Size = new System.Drawing.Size(256, 65);
             this.labelTop1.TabIndex = 2;
-            this.labelTop1.Text = "1. Anna - 12";
+            this.labelTop1.Text = "1.  . . . ";
             this.labelTop1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTop2
             // 
             this.labelTop2.BackColor = System.Drawing.Color.Transparent;
             this.labelTop2.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.labelTop2.ForeColor = System.Drawing.Color.Silver;
+            this.labelTop2.ForeColor = System.Drawing.Color.Orange;
             this.labelTop2.Image = global::Survival.Properties.Resources.longBoardRed;
             this.labelTop2.Location = new System.Drawing.Point(296, 312);
             this.labelTop2.Name = "labelTop2";
             this.labelTop2.Size = new System.Drawing.Size(256, 65);
             this.labelTop2.TabIndex = 3;
-            this.labelTop2.Text = "2. Anna - 12";
+            this.labelTop2.Text = "2.  . . .";
             this.labelTop2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTop4
             // 
             this.labelTop4.BackColor = System.Drawing.Color.Transparent;
             this.labelTop4.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.labelTop4.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelTop4.ForeColor = System.Drawing.Color.Plum;
             this.labelTop4.Image = global::Survival.Properties.Resources.longBoardRed;
             this.labelTop4.Location = new System.Drawing.Point(296, 460);
             this.labelTop4.Name = "labelTop4";
             this.labelTop4.Size = new System.Drawing.Size(256, 65);
             this.labelTop4.TabIndex = 4;
-            this.labelTop4.Text = "4. Anna - 12";
+            this.labelTop4.Text = "4.  . . .";
             this.labelTop4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTop3
             // 
             this.labelTop3.BackColor = System.Drawing.Color.Transparent;
             this.labelTop3.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.labelTop3.ForeColor = System.Drawing.Color.BurlyWood;
+            this.labelTop3.ForeColor = System.Drawing.Color.HotPink;
             this.labelTop3.Image = global::Survival.Properties.Resources.longBoardRed;
             this.labelTop3.Location = new System.Drawing.Point(296, 387);
             this.labelTop3.Name = "labelTop3";
             this.labelTop3.Size = new System.Drawing.Size(256, 65);
             this.labelTop3.TabIndex = 5;
-            this.labelTop3.Text = "3. Anna - 12";
+            this.labelTop3.Text = "3.  . . .";
             this.labelTop3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelTop5
             // 
             this.labelTop5.BackColor = System.Drawing.Color.Transparent;
             this.labelTop5.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
-            this.labelTop5.ForeColor = System.Drawing.Color.Gainsboro;
+            this.labelTop5.ForeColor = System.Drawing.Color.Thistle;
             this.labelTop5.Image = global::Survival.Properties.Resources.longBoardRed;
             this.labelTop5.Location = new System.Drawing.Point(296, 532);
             this.labelTop5.Name = "labelTop5";
             this.labelTop5.Size = new System.Drawing.Size(256, 65);
             this.labelTop5.TabIndex = 5;
-            this.labelTop5.Text = "5. Anna - 12";
+            this.labelTop5.Text = "5.  . . . ";
             this.labelTop5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label1
@@ -108,7 +109,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(177, 119);
+            this.label1.Location = new System.Drawing.Point(179, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(497, 65);
             this.label1.TabIndex = 6;
@@ -127,6 +128,9 @@
             this.labelBack.TabIndex = 7;
             this.labelBack.Text = "Back";
             this.labelBack.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelBack.Click += new System.EventHandler(this.labelBack_Click);
+            this.labelBack.MouseEnter += new System.EventHandler(this.labelBack_MouseEnter);
+            this.labelBack.MouseLeave += new System.EventHandler(this.labelBack_MouseLeave);
             // 
             // labelJoin
             // 
@@ -135,12 +139,15 @@
             this.labelJoin.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelJoin.ForeColor = System.Drawing.Color.Black;
             this.labelJoin.Image = global::Survival.Properties.Resources.PauseBoard1;
-            this.labelJoin.Location = new System.Drawing.Point(15, 693);
+            this.labelJoin.Location = new System.Drawing.Point(25, 687);
             this.labelJoin.Name = "labelJoin";
             this.labelJoin.Size = new System.Drawing.Size(112, 67);
             this.labelJoin.TabIndex = 12;
             this.labelJoin.Text = "Join";
             this.labelJoin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelJoin.Click += new System.EventHandler(this.labelJoin_Click);
+            this.labelJoin.MouseEnter += new System.EventHandler(this.labelJoin_MouseEnter);
+            this.labelJoin.MouseLeave += new System.EventHandler(this.labelJoin_MouseLeave);
             // 
             // Form5
             // 
@@ -156,11 +163,12 @@
             this.Controls.Add(this.labelTop4);
             this.Controls.Add(this.labelTop2);
             this.Controls.Add(this.labelTop1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(869, 824);
             this.MinimumSize = new System.Drawing.Size(869, 824);
             this.Name = "Form5";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form5cs";
+            this.Text = "Ratopia";
             this.Load += new System.EventHandler(this.Form5cs_Load);
             this.ResumeLayout(false);
 

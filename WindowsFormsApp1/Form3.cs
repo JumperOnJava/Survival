@@ -13,11 +13,12 @@ using Survival.Properties;
 
 namespace Survival
 {
-    public partial class Form3 : Form
+    public partial class Form3 : System.Windows.Forms.Form
     {
         Form1 form1 = null;
         private bool change = true;
         public User user = null;
+        public bool gameOver = false;
         public Form3(Form1 f)
         {
             InitializeComponent();
@@ -32,7 +33,6 @@ namespace Survival
             
             if ((form1.user != null) && form1.user.Score < form1.score)
             {
-                // Оновлюємо рекорд користувача
                 form1.user.Score = form1.score;
                 user = form1.user;
 
@@ -54,10 +54,7 @@ namespace Survival
                 }
 
                 labelRecord.Visible = true;
-            }
-            
-
-
+            }          
         }
 
         private void UpdateSkull(object sender, EventArgs e)
@@ -88,24 +85,64 @@ namespace Survival
 
         private void labelExit_Click(object sender, EventArgs e)
         {
-            //Application.Exit();
-
-
-            Form1 form1 = null;
-
-            if (user != null)
+            Form2 form2;
+            if (form1.user != null)
             {
-                form1 = new Form1(user);
+                form2 = new Form2(form1.user);
             }
             else
             {
-                form1= new Form1();
+                form2 = new Form2();
+            }
+            form2.Show();
+            this.Hide();
+        }
+
+        private void labelLeaders_Click(object sender, EventArgs e)
+        {
+            Form5 form5 = new Form5();
+            form5.Show();
+        }
+
+        private void labelRestart_Click(object sender, EventArgs e)
+        {
+            //form1.Hide();
+            //form1.Hide();
+            Form1 newForm1;
+
+            if (form1.user != null)
+            {
+                newForm1 = new Form1(form1.user);
+            }
+            else
+            {
+                newForm1 = new Form1();
             }
 
-            form1.Show();
+            newForm1.Show();
 
 
             this.Hide();
+        }
+
+        private void labelRestart_MouseEnter(object sender, EventArgs e)
+        {
+            labelRestart.ForeColor = Color.White;
+        }
+
+        private void labelRestart_MouseLeave(object sender, EventArgs e)
+        {
+            labelRestart.ForeColor = SystemColors.ControlText;
+        }
+
+        private void labelLeaders_MouseEnter(object sender, EventArgs e)
+        {
+            labelLeaders.ForeColor = Color.White;
+        }
+
+        private void labelLeaders_MouseLeave(object sender, EventArgs e)
+        {
+            labelLeaders.ForeColor = SystemColors.ControlText;
         }
     }
 }

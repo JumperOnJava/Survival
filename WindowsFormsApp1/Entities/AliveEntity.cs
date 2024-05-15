@@ -16,14 +16,16 @@ namespace Survival.Entities
     {
         
         public bool isMoving { get; set; }
-        public int health;
+        public int health { get; set; }
         public int speed { get; set; }
         public bool isAttacking = false;
 
         public float AttackCooldown = 0;
 
-        public int damage { get; set; }
-        public float hurtTimer = 0;
+        public float CutColldown = 0;
+
+        //public int damage { get; set; }
+        public float hurtTimer {  get; set; }
 
         public Direction Direction { get; set; }
         
@@ -34,13 +36,20 @@ namespace Survival.Entities
 
         public Image spriteSheet;
 
-        public AliveEntity(Vector2 pos, int health, int speed, Image spriteSheet)
+        public AliveEntity(Vector2 pos, int health, int speed, Image spriteSheet) : base(null)
         {
             this.pos = pos;
             this.speed = speed;
             this.health = health;
             this.spriteSheet = spriteSheet;
-            currentAnimation = new AnimationSet(Hero.RUN_ANIMATIONS, this);
+            currentAnimation = new AnimationSet(Hero.IDLE_ANIMATIONS, this);
+            hurtTimer = 0;
+        }
+
+        public AliveEntity(Vector2 pos, Image spriteSheet) : base(null)
+        {
+            this.pos = pos;
+            this.spriteSheet = spriteSheet;
         }
 
         public virtual void InputMove(Vector2 movement)
@@ -50,15 +59,16 @@ namespace Survival.Entities
         }
 
 
-        public void CheckCollision()
+        /*
+        public virtual void CheckCollision()
         {
             foreach (var entity in this.scene.entities)
             {
-                if (entity == this)
-                { 
-                    continue; 
+                if (entity == this || entity is Tree)
+                {
+                    continue;
                 }
-                if(!(entity is AliveEntity))
+                if (!(entity is AliveEntity) || entity is Tree)
                 {
                     continue;
                 }
@@ -77,7 +87,40 @@ namespace Survival.Entities
                 }
 
             }
+
         }
+        */
+
+        public virtual void CheckCollision()
+        {
+            foreach (var entity in this.scene.entities)
+            {
+                if (entity == this || entity is MapEntity)
+                {
+                    continue;
+                }
+                if (!(entity is AliveEntity))
+                {
+                    continue;
+                }
+
+                AliveEntity entity2 = (AliveEntity)entity;
+
+                float distance = Vector2.Distance(this.pos, entity.pos);
+                float combinedRadius = this.Radius + entity2.Radius;
+
+                if (distance < combinedRadius)
+                {
+                    // Calculate separation vector
+                    Vector2 separation = Vector2.Normalize(this.pos - entity.pos) * (combinedRadius - distance) / 2f;
+
+                    // Move the entities apart
+                    this.pos += separation;
+                    entity.pos -= separation;
+                }
+            }
+        }
+
 
 
         public override void Draw(Graphics g)
@@ -110,9 +153,8 @@ namespace Survival.Entities
 
         public virtual void Hurt()
         {
-            //damage = 10;
             hurtTimer = 4 / 6f;
-
+           
         }
 
 
@@ -139,15 +181,29 @@ namespace Survival.Entities
             return direction * knockbackForce;
         }
 
+        public void MapBorders()
+        {
+            if (pos.X < -40)
+                pos.X = -40;
+            else if (pos.X > this.scene.Width - 100)
+                pos.X = this.scene.Width - 100;
 
+            if (pos.Y < -50)
+                pos.Y = -50;
+            else if (pos.Y > this.scene.Height - 140)
+                pos.Y = this.scene.Height - 140;
+        }
 
-        public override void Update()
+        protected override void Update()
         {
             currentAnimation.Update();
 
             if(hurtTimer > 0)
                 this.hurtTimer -= Form1.deltaTime;
-            CheckCollision();
+            //CheckCollision();
+
+           MapBorders();
+
         }
     }
 }

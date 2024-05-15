@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form4));
             this.labelConfirm = new System.Windows.Forms.Label();
             this.labelClose = new System.Windows.Forms.Label();
-            this.labelNmae = new System.Windows.Forms.Label();
+            this.labelName = new System.Windows.Forms.Label();
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxEnterName = new System.Windows.Forms.TextBox();
             this.textBoxEnterPassword = new System.Windows.Forms.TextBox();
             this.labelEnterPassword = new System.Windows.Forms.Label();
             this.labelInfo = new System.Windows.Forms.Label();
             this.labelEnterName = new System.Windows.Forms.Label();
+            this.labelError = new System.Windows.Forms.Label();
+            this.labelTitle = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelConfirm
@@ -46,12 +48,12 @@
             this.labelConfirm.BackColor = System.Drawing.Color.Transparent;
             this.labelConfirm.Font = new System.Drawing.Font("Comic Sans MS", 16F, System.Drawing.FontStyle.Bold);
             this.labelConfirm.ForeColor = System.Drawing.Color.Black;
-            this.labelConfirm.Image = global::Survival.Properties.Resources.PauseBoard1;
-            this.labelConfirm.Location = new System.Drawing.Point(449, 515);
+            this.labelConfirm.Image = global::Survival.Properties.Resources.longBoard;
+            this.labelConfirm.Location = new System.Drawing.Point(309, 482);
             this.labelConfirm.Name = "labelConfirm";
-            this.labelConfirm.Size = new System.Drawing.Size(102, 64);
+            this.labelConfirm.Size = new System.Drawing.Size(246, 87);
             this.labelConfirm.TabIndex = 4;
-            this.labelConfirm.Text = "Yes";
+            this.labelConfirm.Text = "Sign up";
             this.labelConfirm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelConfirm.Click += new System.EventHandler(this.labelConfirm_Click);
             this.labelConfirm.MouseEnter += new System.EventHandler(this.labelConfirm_MouseEnter);
@@ -64,30 +66,29 @@
             this.labelClose.Font = new System.Drawing.Font("Comic Sans MS", 16F, System.Drawing.FontStyle.Bold);
             this.labelClose.ForeColor = System.Drawing.Color.Black;
             this.labelClose.Image = global::Survival.Properties.Resources.PauseBoard1;
-            this.labelClose.Location = new System.Drawing.Point(310, 514);
+            this.labelClose.Location = new System.Drawing.Point(20, 691);
             this.labelClose.Name = "labelClose";
             this.labelClose.Size = new System.Drawing.Size(107, 65);
             this.labelClose.TabIndex = 5;
-            this.labelClose.Text = "No";
+            this.labelClose.Text = "Back";
             this.labelClose.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelClose.Click += new System.EventHandler(this.labelClose_Click);
             this.labelClose.MouseEnter += new System.EventHandler(this.labelClose_MouseEnter);
             this.labelClose.MouseLeave += new System.EventHandler(this.labelClose_MouseLeave);
             // 
-            // labelNmae
+            // labelName
             // 
-            this.labelNmae.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelNmae.BackColor = System.Drawing.Color.Transparent;
-            this.labelNmae.Font = new System.Drawing.Font("Comic Sans MS", 15.2F, System.Drawing.FontStyle.Bold);
-            this.labelNmae.ForeColor = System.Drawing.Color.White;
-            this.labelNmae.Image = global::Survival.Properties.Resources.longBoardRed;
-            this.labelNmae.Location = new System.Drawing.Point(310, 179);
-            this.labelNmae.Name = "labelNmae";
-            this.labelNmae.Size = new System.Drawing.Size(236, 72);
-            this.labelNmae.TabIndex = 6;
-            this.labelNmae.Text = "Name";
-            this.labelNmae.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.labelNmae.Click += new System.EventHandler(this.labelNmae_Click);
+            this.labelName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelName.BackColor = System.Drawing.Color.Transparent;
+            this.labelName.Font = new System.Drawing.Font("Comic Sans MS", 15.2F, System.Drawing.FontStyle.Bold);
+            this.labelName.ForeColor = System.Drawing.Color.White;
+            this.labelName.Image = global::Survival.Properties.Resources.longBoardRed;
+            this.labelName.Location = new System.Drawing.Point(310, 179);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(236, 72);
+            this.labelName.TabIndex = 6;
+            this.labelName.Text = "Name";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelPassword
             // 
@@ -108,11 +109,12 @@
             this.textBoxEnterName.AccessibleRole = System.Windows.Forms.AccessibleRole.Text;
             this.textBoxEnterName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBoxEnterName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxEnterName.Font = new System.Drawing.Font("Comic Sans MS", 14.6F, System.Drawing.FontStyle.Bold);
+            this.textBoxEnterName.Font = new System.Drawing.Font("Comic Sans MS", 13F, System.Drawing.FontStyle.Bold);
             this.textBoxEnterName.ForeColor = System.Drawing.Color.White;
-            this.textBoxEnterName.Location = new System.Drawing.Point(335, 252);
+            this.textBoxEnterName.Location = new System.Drawing.Point(335, 254);
+            this.textBoxEnterName.MaxLength = 12;
             this.textBoxEnterName.Name = "textBoxEnterName";
-            this.textBoxEnterName.Size = new System.Drawing.Size(189, 41);
+            this.textBoxEnterName.Size = new System.Drawing.Size(189, 38);
             this.textBoxEnterName.TabIndex = 8;
             this.textBoxEnterName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -120,11 +122,12 @@
             // 
             this.textBoxEnterPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.textBoxEnterPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxEnterPassword.Font = new System.Drawing.Font("Comic Sans MS", 14.6F, System.Drawing.FontStyle.Bold);
+            this.textBoxEnterPassword.Font = new System.Drawing.Font("Comic Sans MS", 13F, System.Drawing.FontStyle.Bold);
             this.textBoxEnterPassword.ForeColor = System.Drawing.Color.White;
-            this.textBoxEnterPassword.Location = new System.Drawing.Point(336, 411);
+            this.textBoxEnterPassword.Location = new System.Drawing.Point(336, 413);
+            this.textBoxEnterPassword.MaxLength = 12;
             this.textBoxEnterPassword.Name = "textBoxEnterPassword";
-            this.textBoxEnterPassword.Size = new System.Drawing.Size(187, 41);
+            this.textBoxEnterPassword.Size = new System.Drawing.Size(187, 38);
             this.textBoxEnterPassword.TabIndex = 10;
             this.textBoxEnterPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -166,12 +169,40 @@
             this.labelEnterName.TabIndex = 2;
             this.labelEnterName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // labelError
+            // 
+            this.labelError.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelError.BackColor = System.Drawing.Color.Transparent;
+            this.labelError.Font = new System.Drawing.Font("Comic Sans MS", 15.2F, System.Drawing.FontStyle.Bold);
+            this.labelError.ForeColor = System.Drawing.Color.Red;
+            this.labelError.Location = new System.Drawing.Point(174, 682);
+            this.labelError.Name = "labelError";
+            this.labelError.Size = new System.Drawing.Size(514, 85);
+            this.labelError.TabIndex = 12;
+            this.labelError.Text = "Error !";
+            this.labelError.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelError.Visible = false;
+            // 
+            // labelTitle
+            // 
+            this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.labelTitle.Font = new System.Drawing.Font("Comic Sans MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelTitle.ForeColor = System.Drawing.Color.White;
+            this.labelTitle.Location = new System.Drawing.Point(291, 101);
+            this.labelTitle.Name = "labelTitle";
+            this.labelTitle.Size = new System.Drawing.Size(284, 87);
+            this.labelTitle.TabIndex = 13;
+            this.labelTitle.Text = "Sign up";
+            this.labelTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Survival.Properties.Resources.HillAndForest;
             this.ClientSize = new System.Drawing.Size(851, 777);
+            this.Controls.Add(this.labelError);
             this.Controls.Add(this.labelInfo);
             this.Controls.Add(this.textBoxEnterPassword);
             this.Controls.Add(this.textBoxEnterName);
@@ -179,8 +210,9 @@
             this.Controls.Add(this.labelClose);
             this.Controls.Add(this.labelConfirm);
             this.Controls.Add(this.labelEnterName);
-            this.Controls.Add(this.labelNmae);
+            this.Controls.Add(this.labelName);
             this.Controls.Add(this.labelPassword);
+            this.Controls.Add(this.labelTitle);
             this.ForeColor = System.Drawing.Color.White;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximumSize = new System.Drawing.Size(869, 824);
@@ -196,12 +228,14 @@
         #endregion
         private System.Windows.Forms.Label labelConfirm;
         private System.Windows.Forms.Label labelClose;
-        private System.Windows.Forms.Label labelNmae;
+        private System.Windows.Forms.Label labelName;
         private System.Windows.Forms.Label labelPassword;
         private System.Windows.Forms.TextBox textBoxEnterName;
         private System.Windows.Forms.TextBox textBoxEnterPassword;
         private System.Windows.Forms.Label labelEnterPassword;
         private System.Windows.Forms.Label labelInfo;
         private System.Windows.Forms.Label labelEnterName;
+        private System.Windows.Forms.Label labelError;
+        private System.Windows.Forms.Label labelTitle;
     }
 }

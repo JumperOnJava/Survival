@@ -12,25 +12,34 @@ using Survival.Util;
 using Survival.Engine;
 using System.Threading;
 using System.IdentityModel.Metadata;
+using Survival.Controllers;
 
 namespace Survival.Entities
 {
     public class Player : AliveEntity
     {
-        public int countKill { get; set; }
-        public Vector2 dir = Vector2.Zero;
-        public int numHeart = 5;
-        public int[] arrHearts = new int[5] { 1, 1, 1, 1, 1 };
-       
+        private Vector2 dir = Vector2.Zero;
+        public int numHeart { get; set; }
+        public int[] arrHearts { get; } = new int[5] { 1, 1, 1, 1, 1 };
+        
         public override float hitboxSize => 32;
 
-        public float Attacktimer = 0.5f;
+        public float attackTimer = 0.5f;
 
         public Player(Vector2 pos) 
             : base(pos, 100, 200, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
-            countKill = 0;
             Radius = 15;
+            size = 100;
+            this.numHeart = 5;
+            new Hitbox(this,(int)Radius);
+        }
+
+        public override void Hurt()
+        {
+            base.Hurt();
+            this.numHeart -= 1;
+            this.arrHearts[this.numHeart] = 0;
         }
 
         public override void SetCurrentAnimation()
@@ -39,7 +48,7 @@ namespace Survival.Entities
             {
                 return;
             }
-            Attacktimer = 0.5f;
+            attackTimer = 0.5f;
 
             if (isMoving)
             {
@@ -67,14 +76,18 @@ namespace Survival.Entities
 
         public void PlayerAttack(AliveEntity monster)
         {
-            if ((Vector2.Distance(this.pos, monster.pos) <= 100) && monster.health > 0 )
+            if ((Vector2.Distance(this.pos, monster.pos) <= 50) && monster.health > 0 )
             {
-                monster.isMoving = false;
-                monster.health -= 50;
+                if (monster is Monster || monster is Tree)
+                {
+                    monster.isMoving = false;
+                    monster.health -= 1;
+                    monster.Hurt();
+                    //monster.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, monster));
+                }
                 
             }
         }
-    
         public override void InputMove(Vector2 movement)
         {
             base.InputMove(movement);
@@ -82,17 +95,15 @@ namespace Survival.Entities
             if (movement != Vector2.Zero)
             {
                 dir = movement;
-                //this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
-            }
-            else
-            {
-                //this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
             }
         }
-        public override void Update()
+        protected override void Update()
         {
             base.Update();
-            Console.WriteLine(this.pos);
+            //Console.WriteLine(this.pos);
+
+
+            //CheckCollision();
 
             if (this.numHeart <= 0)
             {
@@ -120,10 +131,10 @@ namespace Survival.Entities
 
             if (isAttacking)
             {
-                this.Attacktimer -= Form1.deltaTime;
+                this.attackTimer -= Form1.deltaTime;
             }
 
-            if (Attacktimer <= 0) 
+            if (attackTimer <= 0) 
             { 
                 isAttacking = false;
             }
@@ -140,9 +151,44 @@ namespace Survival.Entities
                     {
                         PlayerAttack((AliveEntity)entity);
                     }
+
+                    /*
+                    if (entity is Tree)
+                    {
+                        PlayerCutTree((Tree)entity);
+                    }   
+                    */
                 }
+
                 AttackCooldown = 1;
             }
+
+            /*
+            this.CutColldown -= Form1.deltaTime;
+            if (Form1.PressedKeys[Keys.C] && this.CutColldown <= 0)
+            {
+                foreach (Entity entity in this.scene.entities)
+                {
+                    if (entity is Tree)
+                    {
+                        PlayerCutTree((Tree)entity);
+                    }
+                }
+                this.CutColldown = 2;
+            }
+            */
+            
+
+
+            if (Form1.PressedKeys[Keys.E])
+            {
+                if (!this.scene.isShopOpen)
+                {
+                    this.scene.woodCount++;
+
+                }
+            }
+
         }
 
         private void UpdateAnimation()
