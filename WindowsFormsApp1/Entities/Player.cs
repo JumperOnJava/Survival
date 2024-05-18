@@ -18,28 +18,21 @@ namespace Survival.Entities
 {
     public class Player : AliveEntity
     {
-        private Vector2 dir = Vector2.Zero;
-        public int numHeart { get; set; }
-        public int[] arrHearts { get; } = new int[5] { 1, 1, 1, 1, 1 };
-        
-        public override float hitboxSize => 32;
 
-        public float attackTimer = 0.5f;
+        private float attackTimer = 0.5f;
 
-        public Player(Vector2 pos) 
+        private float AttackCooldown = 0;
+
+        public Player(Vector2 pos)
             : base(pos, 100, 200, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
-            Radius = 15;
-            size = 100;
-            this.numHeart = 5;
-            new Hitbox(this,(int)Radius);
+            this.health = 5;
+            new Hitbox(this, 15, false);
         }
 
-        public override void Hurt()
+        public override void Hurt(Entity attacker)
         {
-            base.Hurt();
-            this.numHeart -= 1;
-            this.arrHearts[this.numHeart] = 0;
+            base.Hurt(attacker);
         }
 
         public override void SetCurrentAnimation()
@@ -54,9 +47,9 @@ namespace Survival.Entities
             {
                 this.SetAnimationConfiguration(new AnimationSet(Hero.RUN_ANIMATIONS, this));
             }
-            else 
+            else
             {
-                if (Form1.PressedKeys[Keys.Space])
+                if (FormMain.PressedKeys[Keys.Space])
                 {
                     this.SetAnimationConfiguration(new AnimationSet(Hero.ATTACK_ANIMATIONS, this));
                     isAttacking = true;
@@ -71,51 +64,43 @@ namespace Survival.Entities
                     this.SetAnimationConfiguration(new AnimationSet(Hero.IDLE_ANIMATIONS, this));
                 }
             }
-
         }
 
         public void PlayerAttack(AliveEntity monster)
         {
-            if ((Vector2.Distance(this.pos, monster.pos) <= 50) && monster.health > 0 )
+            if ((Vector2.Distance(this.pos, monster.pos) <= 70) && monster.health > 0)
             {
-                if (monster is Monster || monster is Tree)
-                {
-                    monster.isMoving = false;
-                    monster.health -= 1;
-                    monster.Hurt();
-                    //monster.SetAnimationConfiguration(new AnimationSet(Hero.HIT_ANIMATIONS, monster));
+                if (monster is AliveEntity)
+                {         
+                    monster.Hurt(this);
                 }
-                
             }
+        }
+
+        public void Heal()
+        {
+            this.health++;
         }
         public override void InputMove(Vector2 movement)
         {
             base.InputMove(movement);
 
-            if (movement != Vector2.Zero)
-            {
-                dir = movement;
-            }
         }
         protected override void Update()
         {
             base.Update();
-            //Console.WriteLine(this.pos);
 
-
-            //CheckCollision();
-
-            if (this.numHeart <= 0)
+            if (this.health <= 0)
             {
-                this.scene.gameOver = true;
+                this.scene.GameOver();
             }
 
             Vector2 playerMovement = new Vector2(
-                (Form1.PressedKeys[Keys.D] ? 0 : -1) +
-                (Form1.PressedKeys[Keys.A] ? 0 : 1),
+                (FormMain.PressedKeys[Keys.D] ? 0 : -1) +
+                (FormMain.PressedKeys[Keys.A] ? 0 : 1),
 
-                (Form1.PressedKeys[Keys.W] ? 0 : 1) +
-                (Form1.PressedKeys[Keys.S] ? 0 : -1)
+                (FormMain.PressedKeys[Keys.W] ? 0 : 1) +
+                (FormMain.PressedKeys[Keys.S] ? 0 : -1)
             );
 
             this.InputMove(playerMovement.Normalized());
@@ -131,89 +116,30 @@ namespace Survival.Entities
 
             if (isAttacking)
             {
-                this.attackTimer -= Form1.deltaTime;
+                this.attackTimer -= FormMain.deltaTime;
             }
 
-            if (attackTimer <= 0) 
-            { 
+            if (attackTimer <= 0)
+            {
                 isAttacking = false;
             }
 
             SetCurrentAnimation();
-            
-            this.AttackCooldown -= Form1.deltaTime;
-            this.UpdateAnimation();
-            if (Form1.PressedKeys[Keys.Space] && AttackCooldown <= 0)
+
+            this.AttackCooldown -= FormMain.deltaTime;
+            if (FormMain.PressedKeys[Keys.Space] && AttackCooldown <= 0)
             {
-                foreach (Entity entity in this.scene.entities) 
+                foreach (Entity entity in this.scene.entities)
                 {
                     if (entity is AliveEntity)
                     {
                         PlayerAttack((AliveEntity)entity);
                     }
-
-                    /*
-                    if (entity is Tree)
-                    {
-                        PlayerCutTree((Tree)entity);
-                    }   
-                    */
                 }
-
-                AttackCooldown = 1;
+                AttackCooldown = 7 / 12f;
             }
 
-            /*
-            this.CutColldown -= Form1.deltaTime;
-            if (Form1.PressedKeys[Keys.C] && this.CutColldown <= 0)
-            {
-                foreach (Entity entity in this.scene.entities)
-                {
-                    if (entity is Tree)
-                    {
-                        PlayerCutTree((Tree)entity);
-                    }
-                }
-                this.CutColldown = 2;
-            }
-            */
-            
-
-
-            if (Form1.PressedKeys[Keys.E])
-            {
-                if (!this.scene.isShopOpen)
-                {
-                    this.scene.woodCount++;
-
-                }
-            }
-
-        }
-
-        private void UpdateAnimation()
-        {
-            float angle = (float)(Math.Atan2(dir.Y, dir.X)*(180/Math.PI));
-
-            switch (angle / 90)
-            {
-                case -1:
-                    this.Direction = Engine.Direction.Up;
-                    break;
-                case 1:
-                    this.Direction = Engine.Direction.Down;
-                    break;
-                case 0.5f:
-                case -0.5f:
-                case 0:
-                    this.Direction = Engine.Direction.Right;
-                    break;
-                case 1.5f:
-                case -1.5f:
-                case 2:
-                    this.Direction = Engine.Direction.Left;
-                    break;
-            }
-        }
+        } 
+    
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survival.Engine;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -9,26 +10,12 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    public class Shop : MapEntity
+    public class Shop : AliveEntity
     {
-        public Shop(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\farmObjects.png")))
+        public Shop(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\shop.png")))
         {
-            this.Radius = 15;
+            new Hitbox(this, 70, true);
+            SetAnimationConfiguration(new Animation(1, 179, 0));
         }
-
-        protected override void Update()
-        {
-            //base.Update();
-            
-        }
-
-
-        public override void Draw(Graphics g)
-        {
-            g.DrawImage(spriteSheet, new Rectangle(new Point((int)pos.X, (int)pos.Y), new Size(158, 179)), 0, 191, 180, 200, GraphicsUnit.Pixel); //tree
-        }
-
-    }
-
-        
+    }     
 }

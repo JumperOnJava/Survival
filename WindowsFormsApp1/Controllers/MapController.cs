@@ -19,18 +19,7 @@ namespace Survival.Controllers
         public static int cellSize = 32;
         public static int[,] map = new int[mapHeight, mapWidth];
         public static Image spriteSheet;
-
-        public static Block[,] RowGeneratorBlocks(Vector2 pos, int rows, int columns)
-        {
-            Block[,] blocks = new Block[rows, columns];
-            for (int i = 0; i < rows; i++)
-            {                
-                for (int j = 0; j < columns; j++)
-                    blocks[i, j] = new Block(new Vector2(pos.X + i * 25, pos.Y + j * 25));
-            }
-            return blocks;
-        }
-
+    
         public static void Init()
         {
             map = GetMap();
@@ -46,16 +35,16 @@ namespace Survival.Controllers
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
                 { 5, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
-                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 7 },
+                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 11, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
-                { 5, 0, 0, 11, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
-                { 5, 0, 0, 11, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
-                { 5, 0, 0, 11, 11, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
-                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
-                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
+                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, 0, 7 },
+                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, -1, -1, -1, -1, -1, 0, 7 },
+                { 5, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, 0, 7 },
+                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, 0, 7 },
+                { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, -1, -1, -1, -1, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 7 },
                 { 5, 0, 0, 0, 0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7 },
                 { 3, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8, 4 }
@@ -68,12 +57,6 @@ namespace Survival.Controllers
             {
                 for (int j = 0; j < mapHeight; j++)
                 {
-                    if (map[i, j] == 10)
-                    {
-                        
-                        g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize * 2, cellSize * 3)), 330, 297, 50, 50, GraphicsUnit.Pixel); //tree
-                        //map[i + 2, j + 1] = 11;
-                    }
                     if (map[i, j] == 11)
                     {
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 581, 110, 20, 20, GraphicsUnit.Pixel); //small stone
@@ -121,15 +104,13 @@ namespace Survival.Controllers
                     {
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 120, 75, 20, 20, GraphicsUnit.Pixel);
                     }
-                    else //if (map[i, j] == 0)
+                    else
                     {
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 0, 0, 20, 20, GraphicsUnit.Pixel);
                     }
                 }
-
             }
             SeedMap(g);
-
         }
 
         public static int GetWidth()
@@ -149,17 +130,5 @@ namespace Survival.Controllers
 
             return new Vector2(x, y);
         }
-
-        public static Vector2 GetCellFromPosition(Vector2 pos)
-        {
-            //float x = column * cellSize;
-            //float y = row * cellSize;
-
-            float row = (pos.X + -100) / cellSize;
-            float column = (pos.Y + 130) / cellSize;
-
-            return new Vector2(row, column);
-        }
-
     }
 }

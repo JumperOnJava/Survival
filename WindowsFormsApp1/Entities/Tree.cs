@@ -1,4 +1,5 @@
 ﻿using Survival.Controllers;
+using Survival.Engine;
 using Survival.Util;
 using System;
 using System.Collections.Generic;
@@ -12,42 +13,44 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-
-    public class Tree : MapEntity
+    public class Tree : AliveEntity
     {
-        public Block block { get; set; }
-        public override float hitboxSize => 30;
-
-        public bool isCutted = false;
-   
-        public Tree(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\Forest.png")))
+        public Tree(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\trees.png")))
         {
-            this.health = 2;
-            this.Radius = 15;
-            this.block = new Block(new Vector2(this.pos.X - 35, this.pos.Y));
+            this.health = 5;
+            new Hitbox(this, 15, true);
+            SetAnimationConfiguration(new Animation(1, 80, FormMain.rnd.Next(0,3)));
         }
 
+        public override void Hurt(Entity attacker)
+        {
+            base.Hurt(attacker);
+            this.hurtTimer = 0.2f;
+        }
         protected override void Update()
         {
-            //base.Update();
+            if (hurtTimer > 0)
+                this.hurtTimer -= FormMain.deltaTime;
 
             if (this.health <= 0)
             {
-                //MapController.map[this.mapX, this.mapY] = 0;
                 RemoveEntity();
-                this.block.RemoveEntity();
-                isCutted = true;
-
+                this.scene.IncrementWood();
             }
-
         }
 
         public override void Draw(Graphics g)
-        {
-            g.DrawImage(spriteSheet, new Rectangle(new Point((int)pos.X, (int)pos.Y), new Size(64, 96)), 330, 297, 50, 50, GraphicsUnit.Pixel); //tree
-            block.Draw(g);
-        }
+        {          
+            Pen pen = new Pen(Color.Red);
+            Point point = new Point((int)pos.X - currentAnimation.SpriteSize, (int)pos.Y - currentAnimation.SpriteSize);
+            if (hurtTimer > 0)
+            {
+                point.Offset(FormMain.rnd.Next(-2, 3),FormMain.rnd.Next(-2,3));
 
+            }
+            var rect = new Rectangle(point, new Size(currentAnimation.SpriteSize*2, currentAnimation.SpriteSize*2));
+            g.DrawImage(spriteSheet, rect, currentAnimation.XPos, currentAnimation.YPos, currentAnimation.SpriteSize, currentAnimation.SpriteSize, GraphicsUnit.Pixel);
+        }
     }
 }
 

@@ -34,17 +34,14 @@ namespace Survival.Engine
 
         public void Update()
         {
-
-            //this.AnimationPlaytime += Form1.deltaTime;
             if (this.currentFrame < this.FrameCount - 1)
             {
-                this.AnimationPlaytime += Form1.deltaTime;
+                this.AnimationPlaytime += FormMain.deltaTime;
             }
             else
             {
                 this.AnimationPlaytime = 0;
             }
-
         }
     }
 }

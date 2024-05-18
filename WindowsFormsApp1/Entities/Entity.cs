@@ -14,14 +14,10 @@ namespace Survival.Entities
 {
     public abstract class Entity
     {
-        public Vector2 pos = Vector2.Zero;
+        public Vector2 pos;
+        protected FormMain scene => FormMain.ActiveScene;
 
-        public virtual float hitboxSize { get; }
-
-        public int size {  get; set; }
-
-        internal Form1 scene => Form1.ActiveScene;
-
+        public virtual float ZOffset => this.pos.Y;
 
         protected Entity parent;
         List<Entity> children = new List<Entity>();
@@ -34,17 +30,20 @@ namespace Survival.Entities
             {
                 this.parent.children.Add(this);
             }
-
         }
    
         public void RemoveEntity()
         {
             this.scene.RemoveEntity(this);
-            this.children.ForEach(e => e.RemoveEntity());
-            if(parent!= null)
-                this.parent.children.Remove(this);
-        }
 
+            if (parent != null)
+                this.parent.children.Remove(this);
+
+            for (int i = this.children.Count - 1; i >= 0; i--)
+            {
+                this.children[i].RemoveEntity();
+            }
+        }
 
         protected virtual void SetParent(Entity entity)
         {
@@ -56,11 +55,13 @@ namespace Survival.Entities
             Update();
             children.ForEach(e=>e.BaseUpdate());
         }
-        protected abstract void Update();
+
+        protected virtual void Update()
+        {
+        }
 
         public virtual void Draw(Graphics g)
         {
-
         }
 
         public bool HasParent()

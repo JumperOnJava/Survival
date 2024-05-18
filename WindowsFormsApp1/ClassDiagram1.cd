@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Survival.Engine.Animation" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAgBAAAAAAAAACAAQBgAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\Animation.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Survival.Engine.AnimationSet" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAgBAAAAAgIAACAAQRgAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Engine\AnimationSet.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Survival.Controllers.MapController" Collapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAQEEAAAAAAAAAAAAAAQABAABAAAAAAAAACEEABACA=</HashCode>
+      <FileName>Controllers\MapController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.AliveEntity">
+    <Position X="10.75" Y="6.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAACAABgAIACAAAAAAAAIAAQAAAACBIAAAgAg=</HashCode>
+      <FileName>Entities\AliveEntity.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Survival.Entities.Corpse">
+    <Position X="16.75" Y="9.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQAAAIAAAA=</HashCode>
+      <FileName>Entities\Corpse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Door">
+    <Position X="9.25" Y="11.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>Entities\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Entity">
+    <Position X="13" Y="7.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAQAAAAgRAAAADAIAAAAAAAAgAAEAAAAAAAAA=</HashCode>
+      <FileName>Entities\Entity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Ghost">
+    <Position X="6.25" Y="11.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAACAAABAAAAAEAABAAIAAAA=</HashCode>
+      <FileName>Entities\Ghost.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Heart">
+    <Position X="15.25" Y="6" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEABQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Heart.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Hitbox">
+    <Position X="15.25" Y="10.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Hitbox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Monster">
+    <Position X="7.75" Y="11.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Monster.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Player">
+    <Position X="10.75" Y="11.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAACAAiAAAAAAAAAAAAAAAAAAACBIAAAgAA=</HashCode>
+      <FileName>Entities\Player.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Shop">
+    <Position X="12.25" Y="11.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Entities\Shop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.StartEntity">
+    <Position X="18.25" Y="8.25" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAACAAACgAAAAEAAAAAAAAEAAAA=</HashCode>
+      <FileName>Entities\StartEntity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Entities.Tree">
+    <Position X="13.75" Y="11.75" Width="1.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Entities\Tree.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormGameOverMenu" Collapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gBiAwEQBJCIAAACARCCAAgACKABAAAABCAgIgAoAcQA=</HashCode>
+      <FileName>FormGameOverMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormLeaderBoard" Collapsed="true">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACQAABAIAACAAAACAAAAAAAAABAEACAAABA=</HashCode>
+      <FileName>FormLeaderBoard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormLogInMenu" Collapsed="true">
+    <Position X="28" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEABBBpCAAAAAAQECQAAWCEAAAAAAAAAAIgQAAAQE=</HashCode>
+      <FileName>FormLogInMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormMain" Collapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>1Yim0FSAACEAAAgATCCpJAMCBHUQEQABQAICAIoAQRw=</HashCode>
+      <FileName>FormMain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormMainMenu" Collapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gByAwIQBJLAAAACABCCAIAACAEBQEAAFCAACAA5BAQA=</HashCode>
+      <FileName>FormMainMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormShop" Collapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwEAAKAABCQAAABAgACAABACIAABAAAAAFAGgACAABA=</HashCode>
+      <FileName>FormShop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.FormSignUpMenu" Collapsed="true">
+    <Position X="26.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEABABpCAAABAEQECQAAWCAAAAAAAAAAAIgQAAAQE=</HashCode>
+      <FileName>FormSignUpMenu.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Program" Collapsed="true">
+    <Position X="28" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Migrations.InitialMigration" Collapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAI=</HashCode>
+      <FileName>Migrations\20240512003534_InitialMigration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Migrations.GameDbContextModelSnapshot" Collapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Migrations\GameDbContextModelSnapshot.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Models.GameDbContext" Collapsed="true">
+    <Position X="28" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\GameDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Models.Hero" Collapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAApAIQQCAAAAAgACAAAQBgAAIIAACAIAAAAAKACAA=</HashCode>
+      <FileName>Models\Hero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Models.User" Collapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAgAAAAAAAQAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Properties.Resources" Collapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQACQAAhEgAkEgAABAEBEADAAYQGAQRAoAAAMAARhIQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Properties.Settings" Collapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Survival.Util.Vector2Extensions" Collapsed="true">
+    <Position X="26.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Util\Vector2Extensions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Survival.Engine.IAnimationProvider" Collapsed="true">
+    <Position X="22.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAgBAAAAAAAAACAAQBgAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\IAnimationProvidercs.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Survival.Engine.DirectionableEntity" Collapsed="true">
+    <Position X="21" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Engine\AnimationSet.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Survival.Engine.Direction" Collapsed="true">
+    <Position X="21" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAI=</HashCode>
+      <FileName>Engine\AnimationSet.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

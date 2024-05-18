@@ -15,23 +15,20 @@ namespace Survival.Entities
 {
     public abstract class Monster : AliveEntity
     {
-        //public override float hitboxSize => 32;
-
         public Monster(Vector2 pos, int health, int speed, Image spriteSheet) : base(pos, health, speed, spriteSheet)
         {
-            this.speed = 70;
         }
 
         public virtual void DetermineMonsterAnimation(Player player) { }
 
         public abstract void UpdateMonsterMovement(Player player);
-
+        
         protected override void Update()
         {
             base.Update();
             if (this.health <= 0)
             {
-                this.scene.score++;
+                this.scene.IncrementScore();
                 this.RemoveEntity();
                 this.scene.AddEntities(new Corpse(this));
             }
@@ -43,8 +40,6 @@ namespace Survival.Entities
             {
                 this.DetermineMonsterAnimation(scene.player);
             }
-        }
-
-
+        }       
     }
 }

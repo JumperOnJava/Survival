@@ -103,6 +103,16 @@ namespace Survival.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boardRed {
+            get {
+                object obj = ResourceManager.GetObject("boardRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap border1 {
             get {
                 object obj = ResourceManager.GetObject("border1", resourceCulture);
@@ -123,6 +133,16 @@ namespace Survival.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap craiyon_021833_Past_Pixelated_Journeys {
+            get {
+                object obj = ResourceManager.GetObject("craiyon_021833_Past_Pixelated_Journeys", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ggg {
             get {
                 object obj = ResourceManager.GetObject("ggg", resourceCulture);
@@ -136,6 +156,16 @@ namespace Survival.Properties {
         internal static System.Drawing.Bitmap grave {
             get {
                 object obj = ResourceManager.GetObject("grave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HD_wallpaper_pixel_art_of_a_coffee_shop_1920_x_1376_r_pixel_cafe {
+            get {
+                object obj = ResourceManager.GetObject("HD-wallpaper-pixel-art-of-a-coffee-shop-1920-x-1376-r-pixel-cafe", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +223,26 @@ namespace Survival.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap note {
+            get {
+                object obj = ResourceManager.GetObject("note", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap noteOff {
+            get {
+                object obj = ResourceManager.GetObject("noteOff", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PauseBoard {
             get {
                 object obj = ResourceManager.GetObject("PauseBoard", resourceCulture);
@@ -213,6 +263,16 @@ namespace Survival.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shop {
             get {
                 object obj = ResourceManager.GetObject("shop", resourceCulture);
@@ -226,6 +286,26 @@ namespace Survival.Properties {
         internal static System.Drawing.Bitmap shop__1_ {
             get {
                 object obj = ResourceManager.GetObject("shop (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shopBg {
+            get {
+                object obj = ResourceManager.GetObject("shopBg", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shopSmall {
+            get {
+                object obj = ResourceManager.GetObject("shopSmall", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -266,6 +346,16 @@ namespace Survival.Properties {
         internal static System.Drawing.Bitmap twoBoards {
             get {
                 object obj = ResourceManager.GetObject("twoBoards", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap veryLongBoardRed {
+            get {
+                object obj = ResourceManager.GetObject("veryLongBoardRed", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

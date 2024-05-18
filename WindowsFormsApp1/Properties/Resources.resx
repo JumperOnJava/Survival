@@ -118,73 +118,100 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="PauseBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PauseBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wideBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wideBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="border1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\border1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="skullBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\skullBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="longBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\longBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ggg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ggg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="HillAndForest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\HillAndForest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="360_F_442914914_hhGKxrhuyMm6ZeMZvO5M0FRpz7AlyG4l-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\360_F_442914914_hhGKxrhuyMm6ZeMZvO5M0FRpz7AlyG4l-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="shop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="skullWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\skullWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="wood" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\wood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="longBoardRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\longBoardRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bigLongBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bigLongBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="board" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\board.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="twoBoards" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\twoBoards.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="space" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\space.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PauseBoard1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PauseBoard1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="border2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\border2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="longBoardWider" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\longBoardWider.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="bgGameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\bgGameOver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="note" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\note.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Home" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="grave" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\grave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="bgGameOver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bgGameOver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="skullBlack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\skullBlack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="longBoardRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\longBoardRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wideBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wideBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HillAndForest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HillAndForest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="longBoardWider" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\longBoardWider.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="twoBoards" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\twoBoards.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="shop (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shop (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boardRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boardRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ggg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ggg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HD-wallpaper-pixel-art-of-a-coffee-shop-1920-x-1376-r-pixel-cafe" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\HD-wallpaper-pixel-art-of-a-coffee-shop-1920-x-1376-r-pixel-cafe.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="grave" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\grave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="longBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\longBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bigLongBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bigLongBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="noteOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\noteOff.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="border1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\border1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PauseBoard1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PauseBoard1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="skullWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\skullWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="space" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\space.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="veryLongBoardRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\veryLongBoardRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="border2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\border2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="board" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\board.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PauseBoard" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PauseBoard.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pngwing.com" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pngwing.com.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="craiyon_021833_Past_Pixelated_Journeys" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\craiyon_021833_Past_Pixelated_Journeys.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="360_F_442914914_hhGKxrhuyMm6ZeMZvO5M0FRpz7AlyG4l-removebg-preview" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\360_F_442914914_hhGKxrhuyMm6ZeMZvO5M0FRpz7AlyG4l-removebg-preview.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wood" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shopBg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shopBg.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

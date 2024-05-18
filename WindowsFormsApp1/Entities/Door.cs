@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Survival.Engine;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
@@ -10,36 +11,24 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    public class Door : MapEntity
+    public class Door : AliveEntity
     {
-        private bool filled  = true;
-        public Block block { get; set; }
-       
-        public Door(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\farmObjects.png")))
+        private bool isOpen => Vector2.Distance(this.pos, this.scene.player.pos) <= 50;
+
+
+        public Door(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\doors.png")))
         {
-            this.Radius = 15;
         }
 
         protected override void Update()
         {
-            //base.Update();
-            if ((Vector2.Distance(this.pos - new Vector2(40, 0), this.scene.player.pos) <= 50))
-            {
-                this.filled = false;
-            }
-            else this.filled = true;
-
-            this.scene.isShopOpen = this.filled;
+            this.scene.isShopOpen = this.isOpen;
         }
 
         public override void Draw(Graphics g)
         {
-            if (filled)
-                g.DrawImage(spriteSheet, new Rectangle(new Point((int)pos.X, (int)pos.Y), new Size(41, 100)), 200, 185, 60, 100, GraphicsUnit.Pixel);
-            else
-                g.DrawImage(spriteSheet, new Rectangle(new Point((int)pos.X, (int)pos.Y + 40), new Size(41, 100)), 200, 288, 60, 100, GraphicsUnit.Pixel);
+            SetAnimationConfiguration(new Animation(1, 128, isOpen ? 1 : 0));
+            base.Draw(g);;         
         }
-
-
     }
 }
