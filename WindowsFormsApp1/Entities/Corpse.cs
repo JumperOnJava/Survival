@@ -35,6 +35,5 @@ namespace Survival.Entities
             var rect = new Rectangle(new Point((int)monster.pos.X - monster.currentAnimation.SpriteSize / 2, (int)monster.pos.Y - monster.currentAnimation.SpriteSize / 2), new Size(monster.currentAnimation.SpriteSize, monster.currentAnimation.SpriteSize));
             g.DrawImage(monster.spriteSheet, rect, monster.currentAnimation.SpriteSize * 7, monster.currentAnimation.SpriteSize * 16, monster.currentAnimation.SpriteSize, monster.currentAnimation.SpriteSize, GraphicsUnit.Pixel);
         }
-
     }
 }

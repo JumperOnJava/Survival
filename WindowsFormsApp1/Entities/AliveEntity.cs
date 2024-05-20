@@ -20,7 +20,7 @@ namespace Survival.Entities
         public int speed { get; set; }
         protected bool isAttacking = false;
         public float hurtTimer {  get; set; }
-        private Vector2 dir = Vector2.Zero;
+        protected Vector2 dir = Vector2.Zero;
 
         public Direction Direction
         {
@@ -63,7 +63,6 @@ namespace Survival.Entities
 
         public virtual void InputMove(Vector2 movement)
         {
-
             if (movement != Vector2.Zero)
             {
                 dir = movement;

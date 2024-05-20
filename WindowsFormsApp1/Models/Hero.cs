@@ -15,7 +15,7 @@ namespace Survival.Models
         public static Animation RUN_ANIMATION_RIGHT =  new Animation(6, 128, 2, 1 / 6f);
         public static Animation RUN_ANIMATION_LEFT =   new Animation(6, 128, 3, 1 / 6f);
 
-        public static Animation IDLE_ANIMATION_UP =    new Animation(12, 128, 5, 1 / 1f);
+        public static Animation IDLE_ANIMATION_UP =    new Animation(12, 128, 5, 1 / 6f);
         public static Animation IDLE_ANIMATION_DOWN =  new Animation(12, 128, 4, 1 / 6f);
         public static Animation IDLE_ANIMATION_RIGHT = new Animation(12, 128, 6, 1 / 6f);
         public static Animation IDLE_ANIMATION_LEFT =  new Animation(12, 128, 7, 1 / 6f);

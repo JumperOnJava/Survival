@@ -17,6 +17,7 @@ namespace Survival.Entities
     {
         public Monster(Vector2 pos, int health, int speed, Image spriteSheet) : base(pos, health, speed, spriteSheet)
         {
+            dir = (this.scene.player.pos - this.pos).Normalized();
         }
 
         public virtual void DetermineMonsterAnimation(Player player) { }

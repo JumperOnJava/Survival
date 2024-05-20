@@ -53,7 +53,3 @@ namespace Survival.Entities
         }
     }
 }
-
-
-
-

@@ -21,7 +21,6 @@ namespace Survival.Engine
 
         public Animation(int frameCount, int SpriteSize, int animationOfSet) : this(frameCount, SpriteSize, animationOfSet, 1 / 12f)
         {
-
         }
 
         public Animation(int frameCount, int SpriteSize, int animationOfSet, float frameTime)

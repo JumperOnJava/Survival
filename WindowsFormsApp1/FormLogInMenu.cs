@@ -68,12 +68,10 @@ namespace Survival
                         labelError.Text = "User does not exist.";
                         labelError.Visible = true;
                         user = null;
-
                     }
                 }
             }
         }
-
         private void labelConfirm_MouseEnter(object sender, EventArgs e)
         {
             labelConfirm.ForeColor = Color.White;

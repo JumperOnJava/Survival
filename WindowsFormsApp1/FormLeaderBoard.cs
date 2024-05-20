@@ -13,7 +13,7 @@ namespace Survival
 {
     public partial class FormLeaderBoard : System.Windows.Forms.Form
     {
-        public Label[] labelsTop;
+        private Label[] labelsTop;
 
         public FormLeaderBoard()
         {

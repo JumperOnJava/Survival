@@ -15,11 +15,9 @@ namespace Survival.Entities
     {
         private bool isOpen => Vector2.Distance(this.pos, this.scene.player.pos) <= 50;
 
-
         public Door(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\doors.png")))
         {
         }
-
         protected override void Update()
         {
             this.scene.isShopOpen = this.isOpen;

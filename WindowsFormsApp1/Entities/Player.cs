@@ -18,7 +18,6 @@ namespace Survival.Entities
 {
     public class Player : AliveEntity
     {
-
         private float attackTimer = 0.5f;
 
         private float AttackCooldown = 0;
@@ -28,6 +27,7 @@ namespace Survival.Entities
         {
             this.health = 5;
             new Hitbox(this, 15, false);
+            this.dir = new Vector2(0, 1);
         }
 
         public override void Hurt(Entity attacker)
@@ -138,8 +138,6 @@ namespace Survival.Entities
                 }
                 AttackCooldown = 7 / 12f;
             }
-
         } 
-    
     }
 }

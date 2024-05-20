@@ -8,7 +8,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{EB9280FE-0439-443F-810F-E5E054AD47E6}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <RootNamespace>Survival</RootNamespace>
     <AssemblyName>Survival</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -270,11 +270,11 @@
     <Compile Include="Entities\Corpse.cs" />
     <Compile Include="Entities\Door.cs" />
     <Compile Include="Entities\Entity.cs" />
+    <Compile Include="Entities\Ghost.cs" />
     <Compile Include="Entities\Heart.cs" />
     <Compile Include="Entities\Hitbox.cs" />
     <Compile Include="Entities\Monster.cs" />
     <Compile Include="Entities\Player.cs" />
-    <Compile Include="Entities\Ghost.cs" />
     <Compile Include="Entities\Shop.cs" />
     <Compile Include="Entities\StartEntity.cs" />
     <Compile Include="Entities\Tree.cs" />
@@ -364,6 +364,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ClassDiagram1.cd" />
+    <None Include="..\..\..\classes.cd">
+      <Link>classes.cd</Link>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -417,7 +420,6 @@
     <None Include="Resources\craiyon_021833_Past_Pixelated_Journeys.png" />
     <None Include="Resources\shopBg.jpg" />
     <Content Include="Sprites\clouds.png" />
-    <Content Include="Sprites\dwarf.png" />
     <Content Include="Sprites\farmObjects.png" />
     <Content Include="Sprites\Forest.png" />
     <Content Include="Sprites\ghost.png" />
@@ -426,6 +428,9 @@
     <Content Include="Sprites\shop %281%29.png" />
     <Content Include="Sprites\shop.png" />
     <Content Include="Sprites\slime.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.1.1.0\build\net46\Microsoft.Data.SqlClient.SNI.targets')" />

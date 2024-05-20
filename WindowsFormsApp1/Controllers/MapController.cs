@@ -70,8 +70,7 @@ namespace Survival.Controllers
             for(int i = 0; i < mapWidth; i++)
             {
                 for(int j = 0; j < mapHeight; j++)
-                {
-                   
+                {          
                     if (map[i, j] == 1)
                     {
                         g.DrawImage(spriteSheet, new Rectangle(new Point(j * cellSize, i * cellSize), new Size(cellSize, cellSize)), 96, 0, 20, 20, GraphicsUnit.Pixel);
@@ -127,7 +126,6 @@ namespace Survival.Controllers
         {
             float x = column * cellSize;
             float y = row * cellSize;
-
             return new Vector2(x, y);
         }
     }

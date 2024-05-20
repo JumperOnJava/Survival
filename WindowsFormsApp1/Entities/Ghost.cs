@@ -24,7 +24,7 @@ namespace Survival.Entities
         public Ghost(Vector2 pos) : base(pos, 5, 100, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\ghost.png")))
         {
             new Hitbox(this,15, false);
-
+            
         }
         public void TryAttack(Player player)
         {
