@@ -49,7 +49,7 @@ namespace Survival
         public void Init()
         {
             Updating();
-            soundPlayer.Play();
+            //soundPlayer.Play();
             timerClouds.Interval = 1000;
             timerClouds.Tick += new EventHandler(UpdateClouds);
             timerClouds.Start();
@@ -169,7 +169,7 @@ namespace Survival
 
         private void labelMusic_Click(object sender, EventArgs e)
         {
-            if (labelMusic.Tag == null || (string)labelMusic.Tag == "on")
+            if ((string)labelMusic.Tag == "on")
             {
                 labelMusic.Image = Properties.Resources.noteOff;
                 labelMusic.Tag = "off";

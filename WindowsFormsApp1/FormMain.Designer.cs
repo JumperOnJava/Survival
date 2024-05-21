@@ -107,7 +107,7 @@
             this.labelMusic.BackColor = System.Drawing.Color.Maroon;
             this.labelMusic.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelMusic.ForeColor = System.Drawing.Color.Black;
-            this.labelMusic.Image = ((System.Drawing.Image)(resources.GetObject("labelMusic.Image")));
+            this.labelMusic.Image = global::Survival.Properties.Resources.noteOff;
             this.labelMusic.Location = new System.Drawing.Point(258, 162);
             this.labelMusic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMusic.Name = "labelMusic";
@@ -199,7 +199,7 @@
             this.labelPause.MouseEnter += new System.EventHandler(this.labelPause_MouseEnter);
             this.labelPause.MouseLeave += new System.EventHandler(this.labelPause_MouseLeave);
             // 
-            // Form1
+            // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -216,12 +216,13 @@
             this.Controls.Add(this.labelLevel);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(656, 677);
             this.MinimumSize = new System.Drawing.Size(656, 677);
-            this.Name = "Form1";
+            this.Name = "FormMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ratopia";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.OnPaint);
             this.ResumeLayout(false);
 

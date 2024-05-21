@@ -20,7 +20,7 @@ namespace Survival.Entities
         public int speed { get; set; }
         protected bool isAttacking = false;
         public float hurtTimer {  get; set; }
-        protected Vector2 dir = Vector2.Zero;
+        protected virtual Vector2 dir { get; set; } = Vector2.Zero;
 
         public Direction Direction
         {

@@ -13,6 +13,7 @@ using Survival.Engine;
 using System.Threading;
 using System.IdentityModel.Metadata;
 using Survival.Controllers;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Survival.Entities
 {
@@ -22,12 +23,12 @@ namespace Survival.Entities
 
         private float AttackCooldown = 0;
 
+        protected override Vector2 dir { get => (this.scene.mouseLocation - this.pos).Normalized(); set { } }
         public Player(Vector2 pos)
             : base(pos, 100, 200, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
         {
             this.health = 5;
             new Hitbox(this, 15, false);
-            this.dir = new Vector2(0, 1);
         }
 
         public override void Hurt(Entity attacker)
@@ -68,7 +69,7 @@ namespace Survival.Entities
 
         public void PlayerAttack(AliveEntity monster)
         {
-            if ((Vector2.Distance(this.pos, monster.pos) <= 70) && monster.health > 0)
+            if ((Vector2.Distance(this.pos+this.dir*30, monster.pos) <= 70) && monster.health > 0)
             {
                 if (monster is AliveEntity)
                 {         
@@ -84,7 +85,6 @@ namespace Survival.Entities
         public override void InputMove(Vector2 movement)
         {
             base.InputMove(movement);
-
         }
         protected override void Update()
         {

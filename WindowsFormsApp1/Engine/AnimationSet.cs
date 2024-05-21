@@ -10,7 +10,7 @@ namespace Survival.Engine
 {
     public class AnimationSet : IAnimationProvider
     {
-        public IAnimationProvider currentAnimation;
+        public IAnimationProvider currentAnimation => Animations[target.Direction];
         private DirectionableEntity target;
 
         public string Dir {  get; set; }
@@ -37,7 +37,6 @@ namespace Survival.Engine
 
         public void Update()
         {
-            currentAnimation = Animations[target.Direction];
             currentAnimation.Update();
         }
     }

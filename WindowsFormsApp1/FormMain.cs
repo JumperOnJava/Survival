@@ -29,13 +29,13 @@ namespace Survival
         public HashSet<Entity> entities { get; private set; } = new HashSet<Entity>();
         private HashSet<Entity> removeNextTick = new HashSet<Entity>();
         private HashSet<Entity> addNextTick = new HashSet<Entity>();
-        private HashSet<Entity> updateNextTick = new HashSet<Entity>();
 
         public static FormMain ActiveScene;
 
         private static float TargetFrameRate = 1000;
 
         public static Dictionary<Keys, bool> PressedKeys = new Dictionary<Keys, bool>();
+        public Vector2 mouseLocation = Vector2.Zero;
 
         private System.Diagnostics.Stopwatch Watch = new System.Diagnostics.Stopwatch();
 
@@ -55,7 +55,7 @@ namespace Survival
         public void Constructor()
         {
             InitializeComponent();
-            soundPlayer.Play();
+            //soundPlayer.Play();
             ActiveScene = this;
 
             foreach (Keys keys in Enum.GetValues(typeof(Keys)))
@@ -67,21 +67,28 @@ namespace Survival
             timerMovement.Tick += (DeltaUpdate);
             KeyDown += new KeyEventHandler(Keyboard);
             KeyUp += new KeyEventHandler(FreeKeyboard);
+            MouseMove += new MouseEventHandler(MouseMoved);
+            MouseDown += new MouseEventHandler(MouseDown_);
+            MouseUp += new MouseEventHandler(MouseUp_);
 
             Init();
+        }
+
+        private void MouseUp_(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                PressedKeys[Keys.Space] = false;
+        }
+
+        private void MouseDown_(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Left)
+                PressedKeys[Keys.Space] = true;
         }
 
         public void RemoveEntity(Entity entity)
         {
             removeNextTick.Add(entity);
-        }
-
-        public void UpdateEntity()
-        {
-            foreach (var entity in entities)
-            {
-                updateNextTick.Add(entity);
-            }
         }
 
         private void FreeKeyboard(object sender, KeyEventArgs e)
@@ -94,11 +101,14 @@ namespace Survival
             PressedKeys[e.KeyCode] = true;
         }
 
+        private void MouseMoved(object sender, MouseEventArgs e)
+        {
+            this.mouseLocation = new Vector2(e.X, e.Y);
+        }
+
         void DeltaUpdate(object sender, EventArgs e)
         {
             Watch.Stop();
-            labelKilledCount.Text = score.ToString();
-            labelWoodCount.Text = woodCount.ToString();
             deltaTime = Watch.ElapsedMilliseconds / 1000f;
             Tick();
             Watch.Restart();
@@ -106,6 +116,8 @@ namespace Survival
 
         public void Tick()
         {
+            labelKilledCount.Text = score.ToString();
+            labelWoodCount.Text = woodCount.ToString();
             foreach (var entity in removeNextTick)
             {
                 entities.Remove(entity);
@@ -118,15 +130,11 @@ namespace Survival
 
             addNextTick.Clear();
 
-            UpdateEntity();
-
-            foreach (var entity in updateNextTick)
+            foreach (var entity in entities)
             {
                 if (!entity.HasParent())
                     entity.BaseUpdate();
             }
-
-            updateNextTick.Clear();
 
             if (score >= 5 && score < 10)
             {
@@ -159,7 +167,6 @@ namespace Survival
         public void GameOver()
         {
             timerMovement.Stop();
-            timerSpawnMonster.Stop();
             Watch.Stop();
             FormGameOverMenu form3 = new FormGameOverMenu(this);
             form3.Show();
@@ -180,10 +187,6 @@ namespace Survival
 
         public void AddEntities(Entity entity)
         {
-            if (entity is Hitbox)
-            {
-                Console.WriteLine("added hitbox");
-            }
             addNextTick.Add(entity);
         }
 
@@ -291,7 +294,7 @@ namespace Survival
 
         private void labelMusic_Click(object sender, EventArgs e)
         {
-            if (labelMusic.Tag == null || (string)labelMusic.Tag == "on")
+            if ((string)labelMusic.Tag == "on")
             {
                 labelMusic.Image = Properties.Resources.noteOff;
                 labelMusic.Tag = "off";
@@ -303,6 +306,11 @@ namespace Survival
                 labelMusic.Tag = "on";
                 soundPlayer.Play();
             }
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

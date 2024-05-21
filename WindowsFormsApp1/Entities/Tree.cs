@@ -1,5 +1,6 @@
 ﻿using Survival.Controllers;
 using Survival.Engine;
+using Survival.Models;
 using Survival.Util;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace Survival.Entities
 {
     public class Tree : AliveEntity
     {
-        public Tree(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\trees.png")))
+        public Tree(Vector2 pos) : base(pos, Sprites.Tree)
         {
             this.health = 5;
             new Hitbox(this, 15, true);
@@ -40,8 +41,7 @@ namespace Survival.Entities
         }
 
         public override void Draw(Graphics g)
-        {          
-            Pen pen = new Pen(Color.Red);
+        {
             Point point = new Point((int)pos.X - currentAnimation.SpriteSize, (int)pos.Y - currentAnimation.SpriteSize);
             if (hurtTimer > 0)
             {

@@ -223,7 +223,7 @@
             this.labelMusic.BackColor = System.Drawing.Color.Transparent;
             this.labelMusic.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelMusic.ForeColor = System.Drawing.Color.Black;
-            this.labelMusic.Image = global::Survival.Properties.Resources.note;
+            this.labelMusic.Image = global::Survival.Properties.Resources.noteOff;
             this.labelMusic.Location = new System.Drawing.Point(529, 562);
             this.labelMusic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMusic.Name = "labelMusic";
@@ -232,7 +232,7 @@
             this.labelMusic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelMusic.Click += new System.EventHandler(this.labelMusic_Click);
             // 
-            // Form2
+            // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -255,7 +255,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(656, 677);
             this.MinimumSize = new System.Drawing.Size(656, 677);
-            this.Name = "Form2";
+            this.Name = "FormMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ratopia";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

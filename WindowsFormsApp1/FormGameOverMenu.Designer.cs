@@ -48,7 +48,7 @@
             this.pictureBoxSkull.BackColor = System.Drawing.Color.Transparent;
             this.pictureBoxSkull.Image = global::Survival.Properties.Resources.skullBlack;
             this.pictureBoxSkull.Location = new System.Drawing.Point(40, 31);
-            this.pictureBoxSkull.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBoxSkull.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBoxSkull.Name = "pictureBoxSkull";
             this.pictureBoxSkull.Size = new System.Drawing.Size(303, 337);
             this.pictureBoxSkull.TabIndex = 0;
@@ -177,7 +177,7 @@
             this.labelMusic.BackColor = System.Drawing.Color.Transparent;
             this.labelMusic.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold);
             this.labelMusic.ForeColor = System.Drawing.Color.Black;
-            this.labelMusic.Image = ((System.Drawing.Image)(resources.GetObject("labelMusic.Image")));
+            this.labelMusic.Image = global::Survival.Properties.Resources.noteOff;
             this.labelMusic.Location = new System.Drawing.Point(2, 547);
             this.labelMusic.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMusic.Name = "labelMusic";
@@ -186,7 +186,7 @@
             this.labelMusic.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelMusic.Click += new System.EventHandler(this.labelMusic_Click);
             // 
-            // Form3
+            // FormGameOverMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -202,10 +202,10 @@
             this.Controls.Add(this.labelQuit);
             this.Controls.Add(this.pictureBoxSkull);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximumSize = new System.Drawing.Size(656, 677);
             this.MinimumSize = new System.Drawing.Size(656, 677);
-            this.Name = "Form3";
+            this.Name = "FormGameOverMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ratopia";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSkull)).EndInit();

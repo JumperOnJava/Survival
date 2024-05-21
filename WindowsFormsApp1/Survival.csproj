@@ -327,6 +327,7 @@
     <Compile Include="Migrations\GameDbContextModelSnapshot.cs" />
     <Compile Include="Models\GameDbContext.cs" />
     <Compile Include="Models\Hero.cs" />
+    <Compile Include="Models\Sprites.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

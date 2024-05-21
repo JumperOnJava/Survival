@@ -24,7 +24,7 @@ namespace Survival
         public FormGameOverMenu(FormMain f1)
         {
             InitializeComponent();
-            soundPlayer.Play();
+            //soundPlayer.Play();
             timerSkull.Interval = 1000;
             timerSkull.Tick += new EventHandler(UpdateSkull); 
             timerSkull.Start();
@@ -168,7 +168,7 @@ namespace Survival
 
         private void labelMusic_Click(object sender, EventArgs e)
         {
-            if (labelMusic.Tag == null || (string)labelMusic.Tag == "on")
+            if ((string)labelMusic.Tag == "on")
             {
                 labelMusic.Image = Properties.Resources.noteOff;
                 labelMusic.Tag = "off";

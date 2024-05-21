@@ -21,7 +21,7 @@ namespace Survival.Entities
         public float AttackTimer = 0.5f;
         private float AttackCooldown = 0;
 
-        public Ghost(Vector2 pos) : base(pos, 5, 100, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\ghost.png")))
+        public Ghost(Vector2 pos) : base(pos, 5, 100, Sprites.Ghost)
         {
             new Hitbox(this,15, false);
             
