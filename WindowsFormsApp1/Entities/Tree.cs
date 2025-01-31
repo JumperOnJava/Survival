@@ -16,10 +16,12 @@ namespace Survival.Entities
 {
     public class Tree : AliveEntity
     {
+        public readonly Hitbox hitbox;
+
         public Tree(Vector2 pos) : base(pos, Sprites.Tree)
         {
             this.health = 5;
-            new Hitbox(this, 15, true);
+            this.hitbox = new Hitbox(this, 15, true);
             SetAnimationConfiguration(new Animation(1, 80, FormMain.rnd.Next(0,3)));
         }
 

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    class Hitbox : Entity
+    public class Hitbox : Entity
     {
         private int Radius;
 
@@ -67,6 +67,11 @@ namespace Survival.Entities
                     }
                 }
             }
+        }
+
+        public bool IntersectsWith(Hitbox entity)
+        {
+            return Vector2.Distance(parent.pos, entity.parent.pos) < Radius + entity.Radius;
         }
     }
 }
