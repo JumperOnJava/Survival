@@ -21,6 +21,7 @@ namespace Survival
         private SoundPlayer soundPlayer = new SoundPlayer(@"C:\Users\svinc\Downloads\Survival2-main (1)\Survival2-main\WindowsFormsApp1\Music\2021-08-30_-_Boss_Time_-_www.FesliyanStudios.com.wav");
         public static Random rnd = new Random();
         public Player player { get; set; }
+        public MapController map { get; set; }
         public bool isShopOpen { get; set; } = false;
         public int score { get; private set; } = 0;
         public int woodCount { get; set; } = 0;
@@ -175,12 +176,12 @@ namespace Survival
 
         public void Init()
         {
-            MapController.Init();
+            this.map = new MapController();
 
             AddEntities(new StartEntity());
 
-            this.Width = MapController.GetWidth();
-            this.Height = MapController.GetHeight();
+            this.Width = this.map.GetWidth();
+            this.Height = this.map.GetHeight();
 
                 timerMovement.Start();
         }
@@ -196,7 +197,7 @@ namespace Survival
             List<Entity> sorted = new List<Entity>(entities);
             sorted.Sort((e1, e2) => e1.ZOffset.CompareTo(e2.ZOffset));
 
-            MapController.DrawMap(g);
+            this.map.DrawMap(g);
             foreach (Entity entity in sorted)
             {
                 entity.Draw(g);
