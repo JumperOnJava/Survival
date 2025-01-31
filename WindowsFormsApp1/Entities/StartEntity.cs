@@ -32,40 +32,26 @@ namespace Survival.Entities
         private void SpawnTree()
         {
             bool isPositionValid = true;
-            Vector2 pos;
             int x = FormMain.rnd.Next(1, 19);
             int y = FormMain.rnd.Next(1, 20);
 
-            if (MapController.map[x, y] != 0)
-            {
-                return;
-            }
+            Tree tree = new Tree(scene.map.GetPositionFromCell(x, y));
 
-            pos = MapController.GetPositionFromCell(x, y);
-            
             foreach (var entity in this.scene.entities)
             {
-                if (entity.pos == Vector2.Zero) continue;
-                if (entity is Heart)
-                {
-                    isPositionValid = true;
+                if (!(entity is Hitbox))
                     continue;
-                }
+                if (entity == tree.hitbox)
+                    continue;
 
-                float distance = Vector2.Distance(entity.pos, pos) / 2;
-                if (distance < 30)
-                {
-                    isPositionValid = false;
-                }
+                Hitbox hitbox = (Hitbox)entity;
+
+                if (tree.hitbox.IntersectsWith(hitbox))
+                    return;
             }
 
-            if (isPositionValid)
-            {
-                Tree tree = new Tree(MapController.GetPositionFromCell(x, y));
-                scene.AddEntities(tree);
-                MapController.map[x, y] = -1;
-                this.scene.IncrementTree();
-            }
+            scene.AddEntities(tree);
+            this.scene.IncrementTree();
         }
 
         protected override void Update()
