@@ -14,44 +14,39 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    public class Tree : AliveEntity
+    public class Tree : Entity, DamageableEntity
     {
-        public readonly Hitbox hitbox;
+        public readonly HitboxEntityComponent hitbox;
+        private RendererComponent renderer;
+        private Vector2 originalPos;
+        public HealthComponent healthComponent;
 
-        public Tree(Vector2 pos) : base(pos, Sprites.Tree)
+        public Tree(Vector2 pos) : base(null)
         {
-            this.health = 5;
-            this.hitbox = new Hitbox(this, 15, true);
-            SetAnimationConfiguration(new Animation(1, 80, FormMain.rnd.Next(0,3)));
+            this.originalPos = pos;
+            this.healthComponent = HealthComponent.createComponent(this, 5);
+            this.hitbox = new HitboxEntityComponent(this, 15, true);
+            this.renderer = new RendererComponent(this, Sprites.Tree, new StaticAnimation(80, 0, FormMain.rnd.Next(0, 3)));
+            renderer.scale = 2;
         }
-
-        public override void Hurt(Entity attacker)
+        void DamageableEntity.OnDamage(int currentHealth)
         {
-            base.Hurt(attacker);
-            this.hurtTimer = 0.2f;
-        }
-        protected override void Update()
-        {
-            if (hurtTimer > 0)
-                this.hurtTimer -= FormMain.deltaTime;
-
-            if (this.health <= 0)
+            if(currentHealth <= 0)
             {
                 RemoveEntity();
                 this.scene.IncrementWood();
             }
         }
-
         public override void Draw(Graphics g)
         {
-            Point point = new Point((int)pos.X - currentAnimation.SpriteSize, (int)pos.Y - currentAnimation.SpriteSize);
-            if (hurtTimer > 0)
+            if (healthComponent.hurtTimer > 0)
             {
-                point.Offset(FormMain.rnd.Next(-2, 3),FormMain.rnd.Next(-2,3));
-
+                this.pos = originalPos + new Vector2(FormMain.rnd.Next(-2, 3), FormMain.rnd.Next(-2, 3));
             }
-            var rect = new Rectangle(point, new Size(currentAnimation.SpriteSize*2, currentAnimation.SpriteSize*2));
-            g.DrawImage(spriteSheet, rect, currentAnimation.XPos, currentAnimation.YPos, currentAnimation.SpriteSize, currentAnimation.SpriteSize, GraphicsUnit.Pixel);
+            else
+            {
+                this.pos = originalPos;
+            }
         }
     }
 }

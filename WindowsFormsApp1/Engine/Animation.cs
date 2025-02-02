@@ -12,14 +12,14 @@ namespace Survival.Engine
     {
         public int FrameCount { get; set; }
         public int SpriteSize { get; set; }
-        public int animationOffSet { get; set; }
+        public int animationOffset { get; set; }
         public float AnimationPlaytime { get; set; }
         public float frameTime { get; set; }
         public int currentFrame => (int)(AnimationPlaytime / frameTime);
         public int XPos => SpriteSize * currentFrame;
-        public int YPos => SpriteSize * animationOffSet;
+        public int YPos => SpriteSize * animationOffset;
 
-        public Animation(int frameCount, int SpriteSize, int animationOfSet) : this(frameCount, SpriteSize, animationOfSet, 1 / 12f)
+        public Animation(int frameCount, int SpriteSize, int animationOffset) : this(frameCount, SpriteSize, animationOffset, 1 / 12f)
         {
         }
 
@@ -27,7 +27,7 @@ namespace Survival.Engine
         {
             this.FrameCount = frameCount;
             this.SpriteSize = SpriteSize;
-            this.animationOffSet = animationOfSet;
+            this.animationOffset = animationOfSet;
             this.frameTime = frameTime;
         }
 

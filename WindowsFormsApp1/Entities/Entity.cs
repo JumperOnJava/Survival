@@ -19,7 +19,7 @@ namespace Survival.Entities
 
         public virtual float ZOffset => this.pos.Y;
 
-        protected Entity parent;
+        public Entity parent { get; set; }
         List<Entity> children = new List<Entity>();
 
         public Entity(Entity parent)
@@ -43,11 +43,6 @@ namespace Survival.Entities
             {
                 this.children[i].RemoveEntity();
             }
-        }
-
-        protected virtual void SetParent(Entity entity)
-        {
-            this.parent = entity;
         }
 
         public void BaseUpdate()

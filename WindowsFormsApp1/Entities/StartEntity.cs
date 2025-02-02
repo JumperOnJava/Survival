@@ -25,7 +25,7 @@ namespace Survival.Entities
             int x = FormMain.rnd.Next(0, this.scene.Width - 120);
             int y = FormMain.rnd.Next(0, this.scene.Height - 420);
 
-            Monster monster = new Ghost(new Vector2(x, y));
+            Ghost monster = new Ghost(new Vector2(x, y));
             scene.AddEntities(monster);
         }
 
@@ -39,12 +39,12 @@ namespace Survival.Entities
 
             foreach (var entity in this.scene.entities)
             {
-                if (!(entity is Hitbox))
+                if (!(entity is HitboxEntityComponent))
                     continue;
                 if (entity == tree.hitbox)
                     continue;
 
-                Hitbox hitbox = (Hitbox)entity;
+                HitboxEntityComponent hitbox = (HitboxEntityComponent)entity;
 
                 if (tree.hitbox.IntersectsWith(hitbox))
                     return;
@@ -62,7 +62,7 @@ namespace Survival.Entities
 
                 scene.AddEntities(this.scene.player);
 
-                for(int i = 0; i < this.scene.player.health; i++) 
+                for(int i = 0; i < this.scene.player.healthComponent.health; i++) 
                 {
                     Heart heart = new Heart(new Vector2((22 * i * 2 + 300), 37), i);
                     scene.AddEntities(heart);           

@@ -1,4 +1,5 @@
 ﻿using Survival.Engine;
+using Survival.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -10,12 +11,13 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    public class Shop : AliveEntity
+    public class Shop : Entity
     {
-        public Shop(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\shop.png")))
+        public Shop(Vector2 pos) : base(null)
         {
-            new Hitbox(this, 70, true);
-            SetAnimationConfiguration(new Animation(1, 179, 0));
+            this.pos = pos;
+            new HitboxEntityComponent(this, 70, true);
+            new RendererComponent(this, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\shop.png")), new StaticAnimation(179, 0, 0));
         }
     }     
 }

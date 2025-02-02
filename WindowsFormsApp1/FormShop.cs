@@ -32,7 +32,7 @@ namespace Survival
                 if(form1.woodCount >= price)
                 {
                     
-                    if (form1.player.health < 5)
+                    if (form1.player.healthComponent.health < 5)
                     {
                         form1.woodCount -= price;
                         form1.player.Heal();

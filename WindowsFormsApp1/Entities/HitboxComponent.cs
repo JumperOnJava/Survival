@@ -10,18 +10,19 @@ using System.Threading.Tasks;
 
 namespace Survival.Entities
 {
-    public class Hitbox : Entity
+    public class HitboxEntityComponent : Entity
     {
         private int Radius;
 
+        public override float ZOffset => 100000;
         private bool isStatic { get; set; }
 
-        public Hitbox(Entity parent, int radius) : base(parent)
+        public HitboxEntityComponent(Entity parent, int radius) : base(parent)
         {
             this.Radius = radius;
         }
 
-        public Hitbox(Entity parent, int radius, bool isStatic) : this(parent, radius)
+        public HitboxEntityComponent(Entity parent, int radius, bool isStatic) : this(parent, radius)
         {
             this.isStatic = isStatic;
         }
@@ -34,7 +35,7 @@ namespace Survival.Entities
                 return;
             foreach (var entity in this.scene.entities)
             {
-                if (entity is Hitbox hitbox)
+                if (entity is HitboxEntityComponent hitbox)
                 {
                     var e1 = this.parent;
                     var e2 = hitbox.parent;
@@ -69,7 +70,19 @@ namespace Survival.Entities
             }
         }
 
-        public bool IntersectsWith(Hitbox entity)
+        public override void Draw(Graphics g)
+        {
+            Random rand = new Random();
+            Color randomColor = Color.FromArgb(rand.Next(256), rand.Next(256), rand.Next(256));
+
+            using (Brush brush = new SolidBrush(randomColor))
+            {
+                float diameter = this.Radius * 2;
+                g.DrawEllipse(new Pen(brush,rand.Next(3)), parent.pos.X - this.Radius, parent.pos.Y - this.Radius, diameter, diameter);
+            }
+        }
+
+        public bool IntersectsWith(HitboxEntityComponent entity)
         {
             return Vector2.Distance(parent.pos, entity.parent.pos) < Radius + entity.Radius;
         }

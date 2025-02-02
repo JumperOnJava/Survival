@@ -25,7 +25,7 @@ namespace Survival.Entities
         public override void Draw(Graphics g)
         {
             var rect = new Rectangle(new Point((int)pos.X, (int)pos.Y), new Size(35, 30));
-            if (this.scene.player.health > order)
+            if (this.scene.player.healthComponent.health > order)
                 g.DrawImage(spriteSheet, rect, 0, 12, 12, 10, GraphicsUnit.Pixel);
             else
             {

@@ -8,12 +8,7 @@ namespace Survival.Engine
 {
     public interface IAnimationProvider
     {
-        int FrameCount { get; set; }
-        int SpriteSize { get; set; }
-        int animationOffSet { get; set; }
-        float AnimationPlaytime { get; set; }
-        float frameTime { get; set; }
-        int currentFrame { get; }
+        int SpriteSize { get; }
         int XPos { get; }
         int YPos { get; }
         void Update();
