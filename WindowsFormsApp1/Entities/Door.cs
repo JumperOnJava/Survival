@@ -1,4 +1,5 @@
 ﻿using Survival.Engine;
+using Survival.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -15,7 +16,7 @@ namespace Survival.Entities
     {
         private bool isOpen => Vector2.Distance(this.pos, this.scene.player.pos) <= 50;
 
-        public Door(Vector2 pos) : base(pos, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\doors.png")))
+        public Door(Vector2 pos) : base(pos, Sprites.Door)
         {
         }
         protected override void Update()

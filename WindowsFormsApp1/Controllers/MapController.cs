@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Survival.Entities;
+using Survival.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -96,20 +97,16 @@ namespace Survival.Controllers
 
     public static class ForestSpriteSheet
     {
-        static Image spriteSheet = (new Bitmap(Path.Combine(
-            new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(),
-            "Sprites\\Forest.png")));
-
-        public static Tile SIDE_TOP_LEFT = spriteSheet.createTile(96, 0, 20, 20);
-        public static Tile SIDE_BOTTOM_LEFT = spriteSheet.createTile(170, 0, 20, 20);
-        public static Tile SIDE_TOP_RIGHT = spriteSheet.createTile(96, 75, 20, 20);
-        public static Tile SIDE_BOTTOM_RIGHT = spriteSheet.createTile(170, 75, 20, 20);
-        public static Tile SIDE_TOP = spriteSheet.createTile(96, 32, 20, 20);
-        public static Tile SIDE_LEFT = spriteSheet.createTile(120, 0, 20, 20);
-        public static Tile SIDE_BOTTOM = spriteSheet.createTile(171, 30, 20, 20);
-        public static Tile SIDE_RIGHT = spriteSheet.createTile(120, 75, 20, 20);
-        public static Tile GROUND = spriteSheet.createTile(0, 0, 20, 20);
-        public static Tile ROCK = spriteSheet.createTile(581, 110, 20, 20);
+        public static Tile SIDE_TOP_LEFT = Sprites.ForestSheet.createTile(96, 0, 20, 20);
+        public static Tile SIDE_BOTTOM_LEFT = Sprites.ForestSheet.createTile(170, 0, 20, 20);
+        public static Tile SIDE_TOP_RIGHT = Sprites.ForestSheet.createTile(96, 75, 20, 20);
+        public static Tile SIDE_BOTTOM_RIGHT = Sprites.ForestSheet.createTile(170, 75, 20, 20);
+        public static Tile SIDE_TOP = Sprites.ForestSheet.createTile(96, 32, 20, 20);
+        public static Tile SIDE_LEFT = Sprites.ForestSheet.createTile(120, 0, 20, 20);
+        public static Tile SIDE_BOTTOM = Sprites.ForestSheet.createTile(171, 30, 20, 20);
+        public static Tile SIDE_RIGHT = Sprites.ForestSheet.createTile(120, 75, 20, 20);
+        public static Tile GROUND = Sprites.ForestSheet.createTile(0, 0, 20, 20);
+        public static Tile ROCK = Sprites.ForestSheet.createTile(581, 110, 20, 20);
     }
 
     public class Tile

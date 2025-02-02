@@ -25,7 +25,7 @@ namespace Survival.Entities
 
         protected override Vector2 dir { get => (this.scene.mouseLocation - this.pos).Normalized(); set { } }
         public Player(Vector2 pos)
-            : base(pos, 100, 200, new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\player.png")))
+            : base(pos, 100, 200, Sprites.Player)
         {
             this.health = 5;
             new Hitbox(this, 15, false);

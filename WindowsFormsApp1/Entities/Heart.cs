@@ -1,4 +1,5 @@
 ﻿using Survival.Entities;
+using Survival.Models;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,7 +13,7 @@ namespace Survival.Entities
 {
     public class Heart : Entity
     {
-        private static Image spriteSheet = new Bitmap(Path.Combine(new DirectoryInfo(Directory.GetCurrentDirectory()).Parent.Parent.FullName.ToString(), "Sprites\\heart.png"));
+        private static Image spriteSheet = Sprites.Heart;
         private int order;
         public override float ZOffset => 100000;
 

@@ -18,7 +18,7 @@ namespace Survival.Entities
     {
         public readonly Hitbox hitbox;
 
-        public Tree(Vector2 pos) : base(pos, Sprites.Tree)
+        public Tree(Vector2 pos) : base(pos, Sprites.Trees)
         {
             this.health = 5;
             this.hitbox = new Hitbox(this, 15, true);
